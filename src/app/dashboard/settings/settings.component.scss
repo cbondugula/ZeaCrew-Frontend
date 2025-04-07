@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Color Variables (tuned for a dark UI) */
+$dark-bg: #18181B;       /* Main dark background */
+$white-text: #FAF6F6;    /* Light text color */
+$secondary-text: #DADADA;/* Lighter gray for labels/subtext */
+$purple: #AB65F3;        /* Primary accent color */
+$button-bg:  #930BC2;
+;     /* Buttons in purple */
+$input-bg: #27272A;      /* Darker background for inputs */
+$border-radius: 8px;
+
+.body-container {
+    background: var(--black-040404);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .heading {
+    margin: 30px;
+  }
+  
+  .title-p {
+    color: var(--purple-text);
+  }
+  
+  .text-purple {
+    color: var(--light-purple);
+  }
+  
+  .content-div {
+    background: var(--table-bg-color);
+    margin-left: 10px;
+    height: 100%;
+    border-top-left-radius: 8px;
+  }
+
+  .variable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .variable-header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(89.95deg, #7512B1 1.11%, #A345DC 48.15%, #DD3A95 96.32%);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  
+  
+  
+  .variable-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.5%;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 6px;
+  }
+  
+  .variable-field {
+    flex: 1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-align: left;
+  }
+  
+  
+  .key-value-error {
+    color: #EF3826;
+    font-weight: bold;
+    font-size: 14px;
+    background: rgba(239, 56, 38, 0.1);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #EF3826;
+    display: flex;
+    align-items: center;
+  }
+  
+  .openai-active {
+    color: #27AE60;
+    font-weight: bold;
+  }
+  
+  .openai-error {
+    color: #EF3826;
+    font-weight: bold;
+  }
+  
+  .edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .delete-btn {
+    color: #EF3826;
+  }
+  
+  .edit-btn img {
+    width: 24px;
+    height: 24px;
+    filter: grayscale(1);
+  }
+  
+  .delete-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(24%) sepia(99%) saturate(4000%) hue-rotate(350deg); /* Red color */
+  }
+
+  .list-border {
+    border-bottom: 1px solid gray
+  }
+
+  .form-group {
+    margin: 15px 0;
+  
+    label {
+      display: block;
+      font-weight: 500;
+      font-size: 12px;         /* Slightly larger than 10px for better readability */
+      color: $secondary-text;
+      margin-bottom: 5px;
+    }
+  
+    /* Shared input styles for text, select, textarea */
+    .input-field {
+      width: 100%;
+      height: 36px;            /* Slightly taller for comfortable click/tap */
+      padding: 6px 10px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid #444;  /* Dark border to match the theme */
+      border-radius: $border-radius;
+      background: $input-bg;
+      color: $white-text;
+  
+      &:focus {
+        outline: none;
+        border-color: $purple; /* Purple border highlight on focus */
+      }
+    }
+  
+    /* If it's a textarea, override the height */
+    .textarea {
+      height: 80px; /* More vertical space for text */
+      resize: vertical; /* Allow manual resizing if desired */
+    }
+  }

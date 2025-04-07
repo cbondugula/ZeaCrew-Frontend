@@ -1,0 +1,110 @@
+$template-bg: #faf6f6;
+$text-color: #000;
+$secondary-text: #bbbbbb;
+$primary-color: #ab65f3;
+$button-bg: #ab65f3;
+$input-bg: #ffffff;
+$border-radius: 8px;
+
+.template-container {
+  width: 60%;
+  margin: auto;
+  background: $template-bg;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: $text-color;
+}
+
+.form-group {
+  margin: 15px 0;
+
+  label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    color: $secondary-text;
+  }
+
+  .input-field {
+    width: 100%;
+    height: 33px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    background: $input-bg;
+  }
+
+  .textarea {
+    height: 58px;
+  }
+}
+
+.save-btn {
+  width: 88px;
+  height: 36px;
+  background: $button-bg;
+  color: #fff;
+  border-radius: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.added-template-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: $primary-color;
+}
+
+.template-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+
+  .template-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .status-tag {
+    display: inline-block;
+    background: #ffd91d;
+    padding: 5px 10px;
+    border-radius: 24px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .description {
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .tags {
+    margin-top: 10px;
+
+    .tag {
+      display: inline-block;
+      background: #e69fff;
+      padding: 5px 10px;
+      border-radius: 24px;
+      font-size: 10px;
+      font-weight: 500;
+      margin-right: 5px;
+    }
+  }
+}

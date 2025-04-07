@@ -1,0 +1,30 @@
+.header-div {
+  flex-shrink: 0;
+  background: var(--table-bg-color);
+  padding: 20px;
+}
+
+.sidebar {
+  min-height: 0;
+  overflow-y: auto;
+  min-width: 300px;
+}
+
+/* .d-flex {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.header-text {
+  margin: 20px;
+}
+
+.content {
+  height: 100%;
+  overflow-y: auto;
+  flex-grow: 1;
+} */

@@ -1,0 +1,121 @@
+<div class="tools-container container-fluid">
+    <div class="content mx-auto">
+      <!-- Title and Description -->
+      <h1 class="title">What is Tools?</h1>
+      <p class="description">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book.
+      </p>
+  
+      <!-- Existing Tools Section -->
+      <div class="existing-tools mt-4">
+        <div class="header d-flex justify-content-between align-items-center mb-3">
+            <h2 class="tools-heading">Existing Tools</h2>
+            <button class="add-btn" (click)="navigateTomodel()">Add New Tools</button>
+          </div>
+          
+  
+        <!-- Error Alert -->
+        <div class="tool-error mb-3">
+          ⚠ 1 Tool Error Found
+        </div>
+  
+        <!-- Filters (Optional) -->
+        <!-- If you need filters, uncomment below:
+        <div class="row mb-4 gx-3 gy-2 align-items-center">
+          <div class="col-sm-6">
+            <label class="form-label">Select Tool</label>
+            <select class="form-select">
+              <option>All</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Sort By Category</label>
+            <select class="form-select">
+              <option>All</option>
+            </select>
+          </div>
+        </div>
+        -->
+
+  
+  <!-- Filters Row -->
+  <div class="tool-filters d-flex gap-4 mb-3">
+    <div class="select-tool">
+      <label>Select Tool</label>
+      <select>
+        <option>All</option>
+        <!-- Add more options if needed -->
+      </select>
+    </div>
+  
+    <div class="sort-category">
+      <label>Sort By Category</label>
+      <select>
+        <option>All</option>
+        <!-- Add more options if needed -->
+      </select>
+    </div>
+  </div>
+  
+        <!-- Tools List -->
+        <div class="row g-3">
+          <!-- Tool Item 1 -->
+          <div class="col-md-4">
+            <div class="tool-item p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="m-0">Serper</h3>
+                <div>
+                  <button class="edit" (click)="onEditTool('Serper')">✎</button>
+                  <button class="delete" (click)="onDeleteTool('Serper')">🗑</button>
+                </div>
+              </div>
+              <p class="m-0">
+                Value
+                <br />
+                <span>6587668899999</span>
+              </p>
+            </div>
+          </div>
+  
+          <!-- Tool Item 2 -->
+          <div class="col-md-4">
+            <div class="tool-item p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="m-0">VPN</h3>
+                <div>
+                  <button class="edit" (click)="onEditTool('VPN')">✎</button>
+                  <button class="delete" (click)="onDeleteTool('VPN')">🗑</button>
+                </div>
+              </div>
+              <p class="m-0">
+                Value
+                <br />
+                <span>6587668899999</span>
+              </p>
+            </div>
+          </div>
+  
+          <!-- Tool Item 3 -->
+          <div class="col-md-4">
+            <div class="tool-item p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="m-0">VPN</h3>
+                <div>
+                  <button class="edit" (click)="onEditTool('VPN-2')">✎</button>
+                  <button class="delete" (click)="onDeleteTool('VPN-2')">🗑</button>
+                </div>
+              </div>
+              <p class="m-0">
+                Value
+                <br />
+                <span>6587668899999</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

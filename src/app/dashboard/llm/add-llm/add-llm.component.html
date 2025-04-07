@@ -1,0 +1,70 @@
+<div class="body-container pt-2">
+  <div class="content-container mt-0">
+    <div class="m-3 d-flex mt-0 pt-3">
+      <div class="back-button me-3 border-secondary" (click)="goBack()">←</div>
+      <div>
+        <p class="text-white fs-2 fw-semibold">Add New LLM Connections</p>
+      </div>
+    </div>
+
+    <div class="input-div d-flex flex-wrap ms-3">
+      <div class="flex-item me-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Connection Name</mat-label>
+          <input matInput placeholder="LLM Connection Name" [(ngModel)]="name" type="text" name="connectionName" />
+          <mat-error *ngIf="name.trim() === ''">Connection Name is required.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-item me-3" *ngIf="llmProviders.length > 0">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Provider</mat-label>
+          <mat-select [(ngModel)]="selectedProvider" name="provider" (selectionChange)="onChangeProvider($event)">
+            <mat-option *ngFor="let item of llmProviders" [value]="item?._id" style="color: var(--white-color)">{{ item?.provider }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <label *ngFor="let model of llmModels" class="me-3">
+        <mat-checkbox
+          [checked]="selectedModels.includes(model)"
+          (change)="onCheckboxChange($event, model)">
+          {{ model }}
+        </mat-checkbox>
+      </label>
+    </div>
+
+    <div class="input-div mb-3 ms-3">
+      <p class="text-white fs-7 mb-2">Environment Variables</p>
+      <div class="d-flex flex-wrap gap-3">
+        <div class="flex-item me-3">
+          <mat-form-field appearance="outline">
+            <mat-label>ENV_VAR_KEY</mat-label>
+            <input matInput placeholder="ENV_VAR_KEY" [(ngModel)]="key" name="envKey" />
+          </mat-form-field>
+        </div>
+        <div class="flex-item me-3">
+          <mat-form-field appearance="outline">
+            <mat-label>ENV_VAR_VALUE</mat-label>
+            <input matInput placeholder="ENV_VAR_VALUE" [(ngModel)]="value" name="envValue" />
+          </mat-form-field>
+        </div>
+        <div class="button-container d-flex align-items-center">
+          <button
+            class="filledRoundedButton"
+            [ngStyle]="{
+              '--btn-color': 'var(--purple-button)',
+              '--text-color': 'var(--white-color)',
+              width: '100px'
+            }"
+            (click)="onClickCreateLLM()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

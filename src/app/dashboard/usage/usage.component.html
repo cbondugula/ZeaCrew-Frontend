@@ -1,0 +1,97 @@
+<div class="body-container">
+  <div class="d-flex align-items-center">
+    <p class="text-white fs-2 flex-grow-1 mb-0 ms-4">Usage</p>
+    <div class="card bg-active flex-grow-1 mt-3 me-3 fw-semibold">
+      <p class="mb-0">Active</p>
+      <p class="fs-3 mb-0">5</p>
+    </div>
+    <div class="card bg-executions flex-grow-1 mt-3 me-3 fw-semibold">
+      <p class="mb-0">Executions</p>
+      <p class="fs-3 mb-0">1</p>
+    </div>
+    <div class="card bg-deploys flex-grow-1 mt-3 me-3 fw-semibold">
+      <p class="mb-0">Deploys</p>
+      <p class="fs-3 mb-0">2</p>
+    </div>
+    <div class="card bg-user flex-grow-1 mt-3 me-3 fw-semibold">
+      <p class="mb-0">User</p>
+      <p class="fs-3 mb-0">3</p>
+    </div>
+  </div>
+
+  <div class="content-div">
+    <div>
+      <button
+        class="filledRoundedButton"
+        [ngStyle]="{
+          '--btn-color': 'var(--purple-dark)',
+          'border-radius': '5px',
+          color: 'white'
+        }"
+      >
+        Insights
+      </button>
+      <button
+        class="outlinedButton ms-1"
+        [ngStyle]="{
+          '--btn-color': 'var(--highlight-color)',
+          'border-radius': '5px',
+          color: 'white'
+        }"
+      >
+        Limits
+      </button>
+    </div>
+    <div class="d-flex m-4">
+      <div class="flex-grow-1 text-white me-3">
+        <p class="text-purple mb-1 fs-4">Overview</p>
+        <p class="text-content mb-0">
+          Crews CReated, Deploys, And Crew Executions
+        </p>
+      </div>
+      <div class="d-flex">
+        <div class="me-3">
+          <p class="text-white fs-7">Time Range</p>
+          <select class="form-select bg-dark text-white border-secondary">
+            <option value="weekly">Weekly</option>
+          </select>
+        </div>
+        <div class="me-3">
+          <p class="text-white fs-7">Period</p>
+          <select class="form-select bg-dark text-white border-secondary">
+            <option value="currMonth">Current Month</option>
+          </select>
+        </div>
+        <div class="me-3">
+          <p class="text-white fs-7">Data Type</p>
+          <select class="form-select bg-dark text-white border-secondary">
+            <option value="cummulative">Cummulative</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-div ms-4 me-4">
+      <canvas id="lineChart">{{ lineChart }}</canvas>
+    </div>
+
+    <div class="d-flex m-4">
+      <div class="flex-grow-1">
+        <p class="text-purple mb-1 fs-4">Crew executions by deployment</p>
+        <p class="text-content mb-2">
+          How Many Times A Crew Was Executed By Department
+        </p>
+        <div class="chart-div-stepped me-4">
+          <canvas id="steppedChart">{{ steppedChart }}</canvas>
+        </div>
+      </div>
+      <div class="justify-content-center">
+        <p class="text-purple mb-1 fs-4">Contributors</p>
+        <p class="text-content mb-2">Distribution of Crew Creations Per User</p>
+        <div class="chart-div-pie me-4">
+          <canvas id="pieChart" style="height: 200px">{{ pieChart }}</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

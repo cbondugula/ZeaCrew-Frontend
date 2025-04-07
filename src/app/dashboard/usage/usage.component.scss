@@ -1,0 +1,65 @@
+.body-container {
+  background-color: var(--black-040404);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.card {
+  background-color: var(--bg-color, white);
+  color: black;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-active {
+  background-color: var(--purple-highlight, white);
+}
+
+.bg-executions {
+  background-color: var(--yellow-color, white);
+}
+
+.bg-deploys {
+  background-color: var(--green-color, white);
+}
+
+.bg-user {
+  background-color: var(--light-purple, white);
+}
+
+.content-div {
+  background-color: var(--table-bg-color);
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+.text-purple {
+  color: var(--purple-highlight);
+}
+
+.chart-div {
+  background-color: white;
+}
+
+.chart-div-stepped {
+  background-color: white;
+  height: 250px;
+}
+
+.chart-div-pie {
+  background-color: white;
+  height: 250px;
+}
+
+.text-content {
+  color: var(--input-placeholder-color);
+  font-size: 12px;
+}

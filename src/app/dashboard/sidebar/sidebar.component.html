@@ -1,0 +1,13 @@
+<aside class="sidebar">
+  <p class="user ms-2 text-white">User</p>
+  <div
+    class="menu-item mb-3"
+    *ngFor="let item of menuItems"
+    [class.selected]="item === selectedItem"
+    (click)="selectItem(item)"
+  >
+    <div class="text-start">
+      <p class="m-3">{{ item.name }}</p>
+    </div>
+  </div>
+</aside>

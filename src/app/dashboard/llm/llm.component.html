@@ -1,0 +1,58 @@
+<div class="body-container" style="height: calc(100dvh - 74px);">
+  <div class="heading">
+    <p class="text-white fs-2">What is LLM?</p>
+    <p class="text-white">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.
+    </p>
+  </div>
+  <div class="content-div">
+    <div class="m-4 d-flex justify-content-between">
+      <p class="title-p fs-4 fw-semibold">Existing LLM</p>
+      <div class="w-25">
+        <p class="text-white fs-7">Select LLM</p>
+        <select class="form-select bg-dark text-white border-secondary">
+          <option value="">Select Provider</option>
+          <option *ngFor="let provider of providers" [value]="provider.name">
+            {{ provider.name }}
+          </option>
+        </select>
+      </div>
+      <button
+        class="outlinedButton"
+        [ngStyle]="{ '--btn-color': 'var(--purple-button)' }"
+        (click)="openAddNewLLM()"
+      >
+        Add New LLM
+      </button>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-start">
+      <div
+        class="card-div d-flex flex-column ms-3 me-3 p-3 mb-3"
+        *ngFor="let item of createdLLMs"
+      >
+        <div class="d-flex justify-content-between">
+          <p class="text-white fs-5 fw-semibold">{{item.name}}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-dark" [routerLink]="['/edit-llm']" (click)="onClickEditLLM(item)">✎</button>
+            <button class="btn btn-dark text-danger" (click)="deleteLlm(item._id)">🗑</button>
+          </div>
+        </div>
+        <p class="text-white pt-2 pb-4"></p>
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-purple">Provider</p>
+            <p class="text-white">{{item.providerName()}}</p>
+          </div>
+          <div>
+            <p class="text-purple">Source</p>
+            <p class="text-white">Lorem ipsum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

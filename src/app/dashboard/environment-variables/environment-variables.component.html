@@ -1,0 +1,45 @@
+<div class="body-container">
+  <div class="heading">
+    <p class="text-white fs-2">What is Environment Variables?</p>
+    <p class="text-white">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </p>
+  </div>
+  <div class="content-div">
+    <div class="m-4 d-flex justify-content-between">
+      <p class="title-p fs-4">Existing Environment Variables?</p>
+      <button class="outlinedButton" [ngStyle]="{ '--btn-color': 'var(--purple-button)' }">
+        Add New Variable
+      </button>
+    </div>
+
+    <div class="m-4 d-flex flex-wrap justify-content-start">
+      <p class="tool-err">1 Tool Error Found</p>
+    </div>
+
+    <div class="m-4 variable-list">
+      <div class="variable-header">
+        <div class="variable-field"><strong>Key</strong></div>
+        <div class="variable-field"><strong>Value</strong></div>
+        <div class="variable-field"><strong>Status</strong></div>
+        <div class="variable-field"><strong>Action</strong></div>
+      </div>
+      <div class="variable-item" *ngFor="let variable of variableList">
+        <div class="variable-field openai-text">{{ variable.key }}</div>
+        <div class="variable-field" [ngClass]="{'key-value-error': variable.status === 'Error'}">
+          {{ variable.value }}
+        </div>
+        <div class="variable-field" [ngClass]="{'openai-active': variable.status === 'Active', 'openai-error': variable.status === 'Error'}">
+          {{ variable.status }}
+        </div>
+        <div class="variable-field action-buttons">
+          <button class="edit-btn">
+            <img src="edit-icon.svg" alt="Edit">
+          </button>
+          <button class="delete-btn">
+            <img src="trash-icon.svg" alt="Delete">
+          </button>
+        </div>
+    </div>
+</div>
+</div>

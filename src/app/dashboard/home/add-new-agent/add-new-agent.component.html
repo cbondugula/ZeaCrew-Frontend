@@ -1,0 +1,164 @@
+<div class="body-container">
+
+    <div class="heading">
+        <p class="text-white fs-2">Steps to create a Zea-Crew</p>
+        <p class="text-white">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </p>
+    </div>
+
+    <div class="content-div">
+
+        <!-- Copy paste the styles in the below classes as per figma. Everything will come in place -->
+        <div class="stepper-contaier">
+            <div class="wrapper">
+                <div class="arrow-steps clearfix">
+                    <div class="step current"><span>Agent 1</span></div>
+                    <div class="step"><span>Agent 2</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Agent Name</label>
+                    <input type="text" class="input-field" placeholder="Agent1" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Select LLM</label>
+                    <select class="input-field">
+                        <option>GPT-4o</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Select Agent Type</label>
+                    <select class="input-field">
+                        <option>Agent1</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Select Integration</label>
+                    <select class="input-field">
+                        <option>Slack</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Goal</label>
+                    <input type="text" class="input-field" placeholder="Lorem Ipsum is simply dummy text" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Select Tools</label>
+                    <select class="input-field">
+                        <option>Serper</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Backstory</label>
+                    <textarea class="input-field textarea" rows="3">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </textarea>
+                </div>
+            </div>
+            <div class="col-md-2 text-end">
+                <button class="save-btn">Save</button>
+            </div>
+        </div>
+
+        <h2 class="added-template-title mt-4">Added Template</h2>
+
+        <div class="d-flex">
+            <div class="template-card col-md-4">
+                <h3 class="template-name">Agent 1</h3>
+                <div>
+                    <span class="status-tag">LLM</span>
+                    <span class="status-tag-second">OpenAI</span>
+                </div>
+                <div>
+                    <span class="status-tag">Integration</span>
+                    <span class="status-tag-second">Slack</span>
+                </div>
+                <div class="tags mt-2">
+                    <span class="status-tag">Tool</span>
+                    <span class="tag">Serper API</span>
+                    <span class="tag">OpenAI</span>
+                    <span class="tag">More...</span>
+                </div>
+                <p class="description mt-2">
+                    Conducts thorough research on topics to identify emerging trends, analyze competitor strategies,
+                    and gather data-driven insights. Read More...
+                </p>
+            </div>
+            <div class="template-card col-md-4">
+                <h3 class="template-name">Agent 1</h3>
+                <div>
+                    <span class="status-tag">LLM</span>
+                    <span class="status-tag-second">OpenAI</span>
+                </div>
+                <div>
+                    <span class="status-tag">Integration</span>
+                    <span class="status-tag-second">Slack</span>
+                </div>
+                <div class="tags mt-2">
+                    <span class="status-tag">Tool</span>
+                    <span class="tag">Serper API</span>
+                    <span class="tag">OpenAI</span>
+                    <span class="tag">More...</span>
+                </div>
+                <p class="description mt-2">
+                    Conducts thorough research on topics to identify emerging trends, analyze competitor strategies,
+                    and gather data-driven insights. Read More...
+                </p>
+            </div>
+            <div class="template-card col-md-4">
+                <h3 class="template-name">Agent 1</h3>
+                <div>
+                    <span class="status-tag">LLM</span>
+                    <span class="status-tag-second">OpenAI</span>
+                </div>
+                <div>
+                    <span class="status-tag">Integration</span>
+                    <span class="status-tag-second">Slack</span>
+                </div>
+                <div class="tags mt-2">
+                    <span class="status-tag">Tool</span>
+                    <span class="tag">Serper API</span>
+                    <span class="tag">OpenAI</span>
+                    <span class="tag">More...</span>
+                </div>
+                <p class="description mt-2">
+                    Conducts thorough research on topics to identify emerging trends, analyze competitor strategies,
+                    and gather data-driven insights. Read More...
+                </p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="next-btn" (click)="navigateToTasks()">NEXT</button>
+        </div>
+
+
+    </div>
+</div>
+
+<app-add-task-modal #modal></app-add-task-modal>

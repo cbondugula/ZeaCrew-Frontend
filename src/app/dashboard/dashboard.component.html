@@ -1,0 +1,13 @@
+<div class="d-flex flex-column vh-100">
+  <div class="header-div p-2">
+    <p class="header-text text-white fs-3">ZeaMed AI</p>
+  </div>
+
+  <div class="d-flex flex-grow-1 overflow-hidden">
+    <app-sidebar class="sidebar d-flex flex-column h-100"></app-sidebar>
+
+    <div class="content flex-grow-1 d-flex flex-column overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

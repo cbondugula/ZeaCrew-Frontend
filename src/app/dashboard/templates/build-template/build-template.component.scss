@@ -1,0 +1,144 @@
+/* Updated SCSS for a dark-themed design */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Color Variables (tuned for a dark UI) */
+$dark-bg: #18181B;      
+$white-text: #FAF6F6;  
+$secondary-text: #DADADA;
+$purple: #AB65F3;       
+$button-bg:  #930BC2;
+$input-bg: #27272A;  
+$border-radius: 8px;
+
+/* Container for the entire template area */
+.template-container {
+  width: 100%;
+  margin: 40px auto;  
+  background: $dark-bg;
+  color: $white-text;
+  padding: 20px;
+  box-shadow: none;  
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Page Title (e.g., 'Build a Template') */
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Each form group: label + input/select/textarea */
+.form-group {
+  margin: 15px 0;
+
+  label {
+    display: block;
+    font-weight: 500;
+    color: $secondary-text;
+    margin-bottom: 5px;
+  }
+
+  /* Shared input styles for text, select, textarea */
+  .input-field {
+    width: 100%;
+    height: 36px;         
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #444; 
+    border-radius: $border-radius;
+    background: $input-bg;
+    color: $white-text;
+
+    &:focus {
+      outline: none;
+      border-color: $purple;
+    }
+  }
+
+  /* If it's a textarea, override the height */
+  .textarea {
+    height: 80px; 
+    resize: vertical; 
+  }
+}
+
+/* Save button styling */
+.save-btn {
+  display: inline-block;
+  margin-top: 10px;
+  width: 88px;
+  height: 36px;
+  background: $button-bg;
+  color: #fff;
+  border-radius: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  line-height: 36px; 
+
+//   &:hover {
+//     background: color.adjust($button-bg, $lightness: -5%);
+// }
+
+/* 'Added Template' section title */
+.added-template-title {
+  font-weight: 600;
+  font-size: 20px;
+  color: $purple;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* Template card styling */
+.template-card {
+  background: $input-bg;
+  padding: 15px;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); 
+  margin-top: 10px;
+  color: $white-text;
+
+  .template-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+  }
+
+  .status-tag {
+    display: inline-block;
+    background: #ffd91d;
+    padding: 5px 10px;
+    border-radius: 24px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .description {
+    font-size: 12px;
+    font-weight: 400;
+    color: $secondary-text;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+
+  .tags {
+    margin-top: 10px;
+
+    .tag {
+      display: inline-block;
+      background: #e69fff;
+      padding: 5px 10px;
+      border-radius: 24px;
+      font-size: 10px;
+      font-weight: 500;
+      margin-right: 5px;
+      color: #000;
+    }
+  }
+}
+}

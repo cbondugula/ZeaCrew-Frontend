@@ -1,0 +1,128 @@
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "primeicons/primeicons.css";
+
+/* Root Color Variables */
+:root {
+  --white-color: #faf6f6;
+  --black-color: #1f1f1f;
+  --grey-color: #3b3b3b;
+  --purple-gradient: linear-gradient(
+    90deg,
+    #7512b1 1.11%,
+    #a345dc 48.15%,
+    #dd3a95 96.32%
+  );
+  --input-text-color: #faf6f6;
+  --input-bg-color: #27272a;
+  --input-border-color: #4d4d4d;
+  --yellow-color: #ffd91d;
+  --light-purple: #e69fff;
+  --green-color: #0f9;
+  --dark-grey: #27272a;
+  --blue-color: #3b82f6;
+  --input-border-light: #ccc;
+  --error-text-color: red;
+  --black-040404: #040404;
+  --purple-mid: #7512b1;
+  --purple-new: #7611b2;
+  --form-bg: #18181a;
+  --input-placeholder-color: #dadada;
+  --border-color: #4c4c4c;
+  --table-bg-color: #18181b;
+  --purple-button: #bd83d1;
+  --purple-text: #b269fe;
+  --purple-new: #955ad3;
+  --highlight-color: #c5c5c5;
+  --purple-highlight: #ab66f1;
+  --purple-dark: #7814b4;
+  --mdc-outlined-text-field-input-text-color: #faf6f6;
+  --mat-form-field-container-vertical-padding: 12px;
+  --mat-form-field-container-height: 42px;
+  --mdc-outlined-text-field-caret-color: #faf6f6;
+  --mat-sys-primary: #faf6f6;
+  --mat-select-panel-background-color: #3b3b3b;
+  --mat-select-enabled-trigger-text-color: #faf6f6;
+  --mat-checkbox-label-text-color: #faf6f6;
+  --mdc-checkbox-selected-checkmark-color: #1f1f1f;
+}
+
+.text-white {
+  color: var(--white-color);
+}
+
+h1,
+h2,
+h3,
+p,
+button,
+sup,
+sub,
+span {
+  font-family: "Poppins", sans-serif !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0 !important;
+}
+
+.outlinedButton {
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 40px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 2px solid var(--btn-color, white);
+  background-color: #1f1f1f;
+  color: var(--btn-color, white);
+}
+
+.outlinedRoundedButton {
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 40px;
+  padding: 8px 14px;
+  border-radius: 24px;
+  border: 2px solid var(--btn-color, white);
+  background-color: #1f1f1f;
+  color: var(--btn-color, white);
+}
+
+.filledRoundedButton {
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 40px;
+  padding: 8px 14px;
+  border-radius: 24px;
+  border: none;
+  background-color: var(--btn-color, white);
+  color: var(--text-color, black);
+}
+
+.fs-7 {
+  font-size: 12px;
+}
+
+.glob-error-message {
+  color: red !important;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}

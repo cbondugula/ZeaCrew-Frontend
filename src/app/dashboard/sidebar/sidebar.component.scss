@@ -1,0 +1,34 @@
+.sidebar {
+  height: 100vh;
+  width: 300px;
+  background: var(--table-bg-color);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.menu-item {
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: var(--dark-grey);
+  color: white;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.menu-item.selected {
+  background: var(--light-purple) !important;
+  color: black !important;
+}
+
+.menu-item:hover {
+  background: var(--light-purple) !important;
+  transform: translateY(-2px);
+}
+
+.user {
+  margin: 10px;
+}

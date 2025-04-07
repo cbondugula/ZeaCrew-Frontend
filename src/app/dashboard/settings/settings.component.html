@@ -1,0 +1,149 @@
+<div class="body-container">
+    <div class="heading">
+        <p class="text-white fs-2">Setting</p>
+        <p class="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi,
+            sed euismod ligula euismod ut.
+        </p>
+    </div>
+    <div class="content-div">
+        <div class="m-4 d-flex justify-content-between">
+            <p class="title-p fs-4 fw-semibold">Members</p>
+            <div class="w-25">
+                <p class="text-white fs-7">Invite new member</p>
+                <p class="text-white fs-7">Type an Email to invite</p>
+            </div>
+            <button class="filledRoundedButton me-2" [ngStyle]="{ '--btn-color': 'var(--purple-mid)' }">Invite</button>
+        </div>
+
+        <div class="m-4 variable-list">
+            <div class="variable-header">
+                <div class="variable-field"><strong>EMAIL</strong></div>
+                <div class="variable-field"><strong>STATUS</strong></div>
+                <div class="variable-field"><strong>ACTION</strong></div>
+            </div>
+            <div class="variable-item" *ngFor="let variable of variableList">
+                <div class="variable-field openai-text">{{ variable.email }}</div>
+
+                <div class="variable-field"
+                    [ngClass]="{'openai-active': variable.status === 'Active', 'openai-error': variable.status === 'Error'}">
+                    {{ variable.status }}
+                </div>
+
+                <!-- download the image and give path in src -->
+                <div class="d-flex variable-field action-buttons">
+                    <div class="edit-btn">
+                        <a><img src="edit image path will be here" alt="Edit"></a>
+                    </div>
+                    <div class="delete-btn">
+                        <a><img src="delete path will be here" alt="Delete"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-div mt-4">
+        <div class="m-4 d-flex justify-content-between">
+            <p class="title-p fs-4 fw-semibold">Roles</p>
+
+            <button class="filledRoundedButton me-2" [ngStyle]="{ '--btn-color': 'var(--purple-mid)' }" (click)="openModal()">Add
+                roles</button>
+        </div>
+
+        <div class="m-4 variable-list">
+            <div class="variable-header">
+                <div class="variable-field"><strong>EMAIL</strong></div>
+                <div class="variable-field"><strong>ROLE</strong></div>
+                <div class="variable-field"><strong>ACTION</strong></div>
+            </div>
+            <div class="variable-item" *ngFor="let variable of variableList">
+                <div class="variable-field openai-text">{{ variable.email }}</div>
+
+                <div class="variable-field"
+                    [ngClass]="{'openai-active': variable.status === 'Active', 'openai-error': variable.status === 'Error'}">
+                    {{ variable.status }}
+                </div>
+
+                <!-- download the image and give path in src -->
+                <div class="d-flex variable-field action-buttons">
+                    <div class="edit-btn">
+                        <a><img src="edit image path will be here" alt="Edit"></a>
+                    </div>
+                    <div class="delete-btn">
+                        <a><img src="delete path will be here" alt="Delete"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-div mt-4">
+
+        <div class="row m-3">
+            <div class="col-md-6">
+                <p class="title-p fs-4 fw-semibold">Defaults</p>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Organization Name</label>
+                    <select class="input-field">
+                        <option>SHC Technologies</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-4">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <p class="text-white">Default for Agents</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-white">Default for Studio</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Agent Name</label>
+                        <input type="text" class="input-field" placeholder="Agent1" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Select LLM</label>
+                        <select class="input-field">
+                            <option>GPT-4o</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Agent Name</label>
+                        <input type="text" class="input-field" placeholder="Agent1" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Select LLM</label>
+                        <select class="input-field">
+                            <option>GPT-4o</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button class="filledRoundedButton me-2" [ngStyle]="{ '--btn-color': 'var(--purple-mid)' }">Save Settings</button>
+
+        </div>
+     </div>
+</div>
+
+<app-add-role-modal #modal></app-add-role-modal>

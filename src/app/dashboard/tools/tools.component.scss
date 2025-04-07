@@ -1,0 +1,133 @@
+.tools-container {
+    background: #27272A; /* Full dark background */
+    color: #FAF6F6;
+    min-height: 100vh;   /* Occupies full viewport height */
+    padding: 20px;
+  }
+  
+  /* Title & description */
+  .title {
+    font-family: Poppins, sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #FAF6F6;
+  }
+  
+  .description {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #DADADA;
+  }
+  .header h2.tools-heading {
+    color: #AB65F3 !important;  // Use !important if a global style is overriding
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  
+  /* Existing Tools header */
+  h2.text-primary {
+    color: #AB65F3 !important;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  /* Add New Tools button */
+  .add-btn {
+    border-radius: 6px;
+    border: 2px solid #E69FFF;
+    color: #E69FFF;
+    font-size: 14px;
+    font-weight: 600;
+    background: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  /* Error styling */
+  .tool-error {
+    color: #EF3826;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  /* Tool items */
+  .tool-item {
+    background: #18181B;
+    border-radius: 5px;
+    color: #DADADA;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .tool-item h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #FAF6F6;
+  }
+  
+  .tool-item span {
+    font-size: 12px;
+    color: #E69FFF;
+  }
+  
+  /* Buttons for edit/delete */
+  button.edit,
+  button.delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    color: #DADADA;
+  }
+  
+  button.delete {
+    color: #EF3826;
+  }
+  
+  /* Responsive layout if needed */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 24px;
+    }
+    .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .tool-filters {
+    display: flex;       /* If not using Bootstrap, ensures a row layout */
+    gap: 20px;           /* Space between filters */
+    margin-bottom: 20px; /* Adjust as needed */
+    
+    label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.15px;
+    }
+  
+    /* “Select Tool” label color #BBB */
+    .select-tool label {
+      color: #bbb;
+    }
+  
+    /* “Sort By Category” label color #dadada */
+    .sort-category label {
+      color: #dadada;
+    }
+  
+    /* Style the <select> to ensure visible text on dark background */
+    select {
+      width: 120px;         /* Adjust as needed */
+      background: #18181b;  /* Dark background to match your theme */
+      color: #fff;          /* White text */
+      border: 1px solid #444;
+      border-radius: 4px;
+      padding: 4px;
+    }
+  }
+  
