@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { HttpCallService } from '../../../services/http-call.service';
+import { SpinnerService } from '../../../services/spinner.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-llm',
@@ -13,7 +15,7 @@ export class EditLlmComponent {
    llmProviders: any = [];
     llmModels:any = [];
   
-    constructor(private router: Router, private httpCallService: HttpCallService,private activatedRoute: ActivatedRoute) {}
+    constructor(private router: Router, private httpCallService: HttpCallService,private activatedRoute: ActivatedRoute,private spinner: SpinnerService, private snackbar: MatSnackBar) {}
 
     currentLLM:any;
 
@@ -46,16 +48,23 @@ export class EditLlmComponent {
 
   
     getProviders(): void {
+      this.spinner.show("Loading...");
         this.httpCallService.getWithAuth(`${environment.api}/llms/get_allowed_providers`).subscribe({
           next: (response) => {
+            this.spinner.hide();
             if(response['success']) {
               this.llmProviders = response['providers'];
             }else {
-              console.error('Error fetching providers', response);
+              this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{
+                duration: 3000
+              })
             }
           },
           error: (error) => {
-            console.error('Error fetching providers', error);
+            this.spinner.hide();
+            this.snackbar.open(error?.error?.error ? error.error?.error : "Unknown Error Occured","Close",{
+              duration: 3000
+            })
           },
         });
     }
@@ -69,11 +78,15 @@ export class EditLlmComponent {
           if(response['success']) {
             this.llmModels = response['models'];
           }else {
-            console.error('Error fetching providers', response);
+            this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{
+              duration: 3000
+            })
           }
         },
         error: (error) => {
-          console.error('Error fetching providers', error);
+          this.snackbar.open(error?.error?.error ? error.error?.error : "Unknown Error Occured","Close",{
+            duration: 3000
+          })
         },
       });
     }
@@ -92,6 +105,7 @@ export class EditLlmComponent {
     }
   
     onClickEditLLM(){
+      this.spinner.show("Loading...");
       const body = {
         _id : this.currentLLM._id,
         name: this.name,
@@ -103,15 +117,21 @@ export class EditLlmComponent {
       }
       this.httpCallService.putWithAuth(`${environment.api}/llms/edit_llm_connection`,body).subscribe({
         next: (response) => {
+          this.spinner.hide();
           if(response['success']) {
             console.log(response);
             this.router.navigate(['/llm']);
           }else {
-            console.error('Error fetching providers', response);
+            this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{
+              duration: 3000
+            })
           }
         },
         error: (error) => {
-          console.error('Error fetching providers', error);
+          this.spinner.hide();
+          this.snackbar.open(error?.error?.error ? error.error?.error : "Unknown Error Occured","Close",{
+            duration: 3000
+          })
         },
       });
     }

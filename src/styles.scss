@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 /* Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
@@ -46,7 +47,55 @@
   --mat-select-enabled-trigger-text-color: #faf6f6;
   --mat-checkbox-label-text-color: #faf6f6;
   --mdc-checkbox-selected-checkmark-color: #1f1f1f;
+  --mat-snack-bar-button-color: red;
 }
+
+.mat-mdc-form-field {
+  // Base state
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__trailing,
+  .mdc-notched-outline__notch {
+    border-color: #faf6f6 !important;
+  }
+
+  // Hover state
+  &:hover:not(.mdc-text-field--disabled) {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__trailing,
+    .mdc-notched-outline__notch {
+      border-color: #faf6f6 !important;
+    }
+  }
+
+  // Focus state
+  &.mdc-text-field--focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__trailing,
+    .mdc-notched-outline__notch {
+      border-color: #faf6f6 !important;
+    }
+  }
+}
+
+mat-label{
+  color: #faf6f6 !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-left: 0px !important;
+}
+
+
+// .mat-mdc-form-field:hover .mdc-text-field--outlined:not(.mdc-text-field--disabled) {
+//   .mdc-notched-outline__leading,
+//   .mdc-notched-outline__trailing,
+//   .mdc-notched-outline__notch {
+//     border-color: green !important;
+//     transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+//   }
+// }
+
+
 
 .text-white {
   color: var(--white-color);

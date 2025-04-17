@@ -16,9 +16,11 @@ import {
 import { InterceptorService } from './services/interceptor.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { SpinnerDialogComponent } from './spinner-dialog/spinner-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, SpinnerDialogComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -29,6 +31,7 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [
     provideRouter(routes),

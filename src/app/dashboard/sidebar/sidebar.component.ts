@@ -11,7 +11,7 @@ export class SidebarComponent {
   menuItems = [
     { name: 'Home', route: '/home' },
     { name: 'LLM', route: '/llm' },
-    { name: 'Integrations', route: '/home' },
+    { name: 'Integrations', route: '/integrations' },
     { name: 'Tools', route: '/tools' },
     { name: 'Environment Variables', route: '/environment-variables' },
     { name: 'Templates', route: '/templates' },
@@ -30,5 +30,10 @@ export class SidebarComponent {
   selectItem(item: any) {
     this.selectedItem = item;
     this.router.navigate([item.route]);
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(["/login"]);
   }
 }

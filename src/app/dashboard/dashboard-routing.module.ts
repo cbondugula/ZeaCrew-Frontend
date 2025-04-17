@@ -15,6 +15,7 @@ import { ToolsComponent } from './tools/tools.component';
 import { UsageComponent } from './usage/usage.component';
 import { DashboardComponent } from './dashboard.component';
 import { EditLlmComponent } from './llm/edit-llm/edit-llm.component';
+import { IntegrationsComponent } from './integrations/integrations.component';
 
 export const routes: Routes = [
   {
@@ -27,10 +28,8 @@ export const routes: Routes = [
       { path: 'add-new-llm', component: AddLlmComponent },
       { path: 'tools', component: ToolsComponent },
       { path: 'usage', component: UsageComponent },
-      {
-        path: 'environment-variables',
-        component: EnvironmentVariablesComponent,
-      },
+      { path: 'integrations', component: IntegrationsComponent},
+      { path: 'environment-variables',component: EnvironmentVariablesComponent},
       { path: 'templates', component: TemplatesComponent },
       { path: 'build-template', component: BuildTemplateComponent },
       { path: 'deploy-template', component: DeployTemplateComponent },

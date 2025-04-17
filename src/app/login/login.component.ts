@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpCallService } from '../services/http-call.service';
 import { environment } from '../environments/environment';
+import { SpinnerService } from '../services/spinner.service';
 
 @Component({
   standalone: false,
@@ -25,7 +26,8 @@ export class LoginComponent {
   constructor(
     private httpCallService: HttpCallService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private spinner: SpinnerService,
+    private snackbar: MatSnackBar
   ) {
     this.signInForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -47,7 +49,7 @@ export class LoginComponent {
     if (this.signInForm.invalid) {
       return;
     }
-
+    this.spinner.show("Loading...");
     this.loginData.email = this.signInForm.value.email;
     this.loginData.password = this.signInForm.value.password;
 
@@ -55,25 +57,27 @@ export class LoginComponent {
     this.errorMessage = '';
     this.httpCallService.post(`${environment.api}/llms/auth/signin`, this.loginData).subscribe({
       next: (response) => {
+        this.spinner.hide();
         if (response['success']) {
           this.isLoading = false;
           localStorage.setItem('token', response.access_token);
           this.router.navigate(['/home']);
         } else {
           this.errorMessage = 'Login failed: ' + response.error;
+          this.snackbar.open(response?.error ? response.error : "Unknown Error Occured","Close",{
+            duration: 3000
+          })
         }
       },
       error: (error) => {
+        this.spinner.hide();
         this.isLoading = false;
-        console.error(this.loginData);
-        console.error('Login failed:', error);
-
-        const errorMessage =
-          error?.error?.message || 'An unknown error occurred';
-
-        this.errorMessage = errorMessage;
+        this.snackbar.open(error?.error?.error ? error.error?.error : "Unknown Error Occured","Close",{
+          duration: 3000
+        })
       },
       complete: () => {
+        this.spinner.hide();
         this.isLoading = false;
       },
     });

@@ -1,0 +1,101 @@
+<div class="integrations-container container-fluid">
+  <div class="heading">
+    <p class="text-white fs-2">What is Integrations and Connection?</p>
+    <p class="text-white">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.
+    </p>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-end flex-wrap mb-4">
+    <h2 class="integrations-heading">Existing Integrations</h2>
+    <div class="integrations-filters d-flex gap-4">
+      <div>
+        <label for="integrationSelect">Select Integration</label>
+        <select id="integrationSelect" class="form-select bg-dark text-white border-secondary">
+          <option>Slack</option>
+          <option>HubSpot</option>
+          <option>Zapier</option>
+        </select>
+      </div>
+      <div>
+        <label for="categorySelect">Sort By Category</label>
+        <select id="categorySelect" class="form-select bg-dark text-white border-secondary">
+          <option>All</option>
+          <option>Communication</option>
+          <option>Automation</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="integrations-error">
+    <span>⚠️</span>
+    1 Integration Error Found
+  </div>
+
+  <div class="row gy-4">
+    <div class="col-lg-4 col-md-6">
+      <div class="integrations-item error">
+        <div class="action-buttons">
+          <button class="edit" (click)="onEditIntegration('Slack')">
+            <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+          </button>
+          <button class="delete" (click)="onDeleteIntegration('Slack')">
+            <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+          </button>
+          
+        </div>
+        <div class="content">
+          <h3><img src="assets/images/slack.png" alt="Slack" /> Slack</h3>
+          <p>Activate crews directly within Slack with simple commands</p>
+        </div>
+        <div class="status-wrapper">
+          <div class="status connected">🔗 Connected</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="integrations-item">
+        <div class="action-buttons">
+          <button class="edit" (click)="onEditIntegration('Slack')">
+            <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+          </button>
+          <button class="delete" (click)="onDeleteIntegration('Slack')">
+            <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+          </button>
+        </div>
+        <div class="content">
+          <h3><img src="assets/images/hubspot-icon.png" alt="HubSpot" /> HubSpot</h3>
+          <p>Automate crew activation with powerful HubSpot workflows</p>
+        </div>
+        <div class="status-wrapper">
+          <div class="status connected">🔗 Connected</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="integrations-item">
+        <div class="action-buttons">
+          <button class="edit" (click)="onEditIntegration('Slack')">
+            <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+          </button>
+          <button class="delete" (click)="onDeleteIntegration('Slack')">
+            <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+          </button>
+        </div>
+        <div class="content">
+          <h3><img src="assets/images/zapier-icon.png" alt="Zapier" /> Zapier</h3>
+          <p>Trigger crews and automate workflows with Zapier and CrewAI</p>
+        </div>
+        <div class="status-wrapper">
+          <div class="status disconnected">🔗 Connect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
