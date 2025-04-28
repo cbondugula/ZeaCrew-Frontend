@@ -17,7 +17,7 @@ export class SidebarComponent {
     { name: 'Templates', route: '/templates' },
     { name: 'Usage', route: '/usage' },
     { name: 'Billing', route: '/billing' },
-    { name: 'Settings', route: '/settings' },
+    { name: 'Settings', route: '/settings' }
   ];
   selectedItem = this.menuItems[0];
   @Output() contentChange = new EventEmitter<string>();

@@ -62,9 +62,10 @@ export class ToolsComponent implements OnInit {
       })
     })
   }
-  onEditClick(toolId: string): void {
-    this.selectedToolId = toolId;
-    console.log("Updating here : ", this.selectedToolId);
+  onEditClick(tool: any): void {
+    this.toolData.name = tool.name;
+    this.toolData.api_key = tool.api_key;
+    this.selectedToolId = tool.id;
   }
 
   async onAddTool() {
@@ -113,6 +114,8 @@ export class ToolsComponent implements OnInit {
     this.spinner.show("Loading....");
     this.httpCallService.putWithAuth(`${environment.api}/tls/tools/${this.selectedToolId}`, this.toolData).subscribe((res: any) => {
       this.spinner.hide();
+      var myModal = new bootstrap.Modal(document.getElementById('#editToolsModal'), {});
+      myModal.hide();
       if (res['success']) {
         console.log("edit is successfully completed..");
         this.getAllTools();

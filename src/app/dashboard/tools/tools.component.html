@@ -3,9 +3,7 @@
     <!-- Title and Description -->
     <h1 class="title">What is Tools?</h1>
     <p class="description">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-      and scrambled it to make a type specimen book.
+      Tools are AI-powered services designed to perform specific tasks, such as data extraction, automation, or analysis. They help streamline processes by integrating with systems to enhance functionality and improve efficiency.
     </p>
 
     <!-- Existing Tools Section -->
@@ -52,16 +50,15 @@
               <h3 class="m-0">{{tool.name}}</h3>
               <div>
                 <button class="edit" data-bs-toggle="modal" data-bs-target="#editToolsModal"
-                  (click)="onEditClick(tool.id)">✎</button>
+                  (click)="onEditClick(tool)">✎</button>
                 <!-- <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addToolsModal">Add New Tools</button> -->
                 <button class="delete" (click)="onDeleteTool(tool.id)">🗑</button>
               </div>
             </div>
             <p class="m-0">
               Value
-              <br />
-              <span>{{tool.api_key}}</span>
             </p>
+            <p style="color: #E69FFF;" class="fs-10 fw-4">{{tool.api_key}}</p>
           </div>
         </div>
 
@@ -72,7 +69,7 @@
 <div class="modal  fade" id="editToolsModal" tabindex="-1" aria-labelledby="addToolsModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content dark-theme">
-      <div class="modal-header">
+      <div class="modal-header"> 
         <h2 class="modal-title" id="addToolsModalLabel">Edit Tool</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>

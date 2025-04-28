@@ -12,13 +12,13 @@ $border-radius: 8px;
 
 /* Container for the entire template area */
 .template-container {
-  width: 100%;
-  margin: 40px auto;  
+  width: 100%; 
   background: $dark-bg;
   color: $white-text;
   padding: 20px;
   box-shadow: none;  
   font-family: 'Poppins', sans-serif;
+  height: calc(100dvh - 74px);
 }
 
 /* Page Title (e.g., 'Build a Template') */

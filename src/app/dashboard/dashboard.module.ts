@@ -30,6 +30,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TemplateEnvComponent } from './templates/template-env/template-env.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AddRoleModalComponent,
     AddLlmComponent,
     UsageComponent,
-    EditLlmComponent
+    EditLlmComponent,
+    TemplateEnvComponent,
+    SimulationComponent
   ],
   imports: [
     CommonModule,

@@ -16,13 +16,15 @@ import { UsageComponent } from './usage/usage.component';
 import { DashboardComponent } from './dashboard.component';
 import { EditLlmComponent } from './llm/edit-llm/edit-llm.component';
 import { IntegrationsComponent } from './integrations/integrations.component';
+import { TemplateEnvComponent } from './templates/template-env/template-env.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'template-env', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'llm', component: LlmComponent },
       { path: 'add-new-llm', component: AddLlmComponent },
@@ -37,8 +39,9 @@ export const routes: Routes = [
       { path: 'tasks', component: TasksComponent },
       { path: 'billing', component: BillingComponent },
       { path: 'settings', component: SettingsComponent },
-
+      {path: 'template-env', component: TemplateEnvComponent},
       // { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: 'chat/:id', component: SimulationComponent},
       { path: 'edit-llm', component: EditLlmComponent },
     ],
   },

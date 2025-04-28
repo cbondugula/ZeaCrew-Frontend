@@ -10,9 +10,9 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label>Select LLM</label>
+          <label>Select Agent Provider</label>
           <select class="input-field">
-            <option>GPT-4o</option>
+            <option *ngFor="let llm of llms" [value]="llm._id">{{llm.name}}</option>
           </select>
         </div>
       </div>
@@ -21,10 +21,12 @@
     <div class="row mb-3">
       <div class="col-md-6">
         <div class="form-group">
-          <label>Select Agent Type</label>
-          <select class="input-field">
-            <option>Agent1</option>
-          </select>
+          <label>Agent role</label>
+          <input
+            type="text"
+            class="input-field"
+            placeholder="Lorem Ipsum is simply dummy text"
+          />
         </div>
       </div>
       <div class="col-md-6">
@@ -52,7 +54,7 @@
         <div class="form-group">
           <label>Select Tools</label>
           <select class="input-field">
-            <option>Serper</option>
+            <option *ngFor="let tool of tools" [value]="tool.id">{{tool.name}}</option>
           </select>
         </div>
       </div>

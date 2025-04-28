@@ -1,7 +1,7 @@
 .tools-container {
     background: #27272A; /* Full dark background */
     color: #FAF6F6;
-    min-height: 100vh;   /* Occupies full viewport height */
+    min-height: calc(100dvh - 93px);   /* Occupies full viewport height */
     padding: 20px;
   }
   

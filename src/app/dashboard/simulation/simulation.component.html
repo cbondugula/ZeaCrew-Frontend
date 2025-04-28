@@ -1,0 +1,32 @@
+<section class="container-fluid p-4" style="background-color: var(--black-color);height: calc(100dvh - 75px);">
+    <div class="row h-100 px-0 justify-content-center">
+        <!-- <div class="col-md-3 h-100 ps-0 pe-1" >
+            <div class="h-100" style="border: 1px solid var(--border-color);border-radius: 8px;">
+                <div class="p-2 mb-3" style="background-color: var(--grey-color);border-top-right-radius: 8px;border-top-left-radius: 8px;">
+                    <p class="fs-16 fw-5 mb-0" style="color: var(--white-color);">Studio Chats</p>
+                </div>
+                <p class="fs-10 fw-4 mx-2" style="color: var(--white-color);">Could you please clarify if the chat title should be related to automation?</p>
+                <hr class="w-100" style="border: 1px solid var(--border-color);">
+            </div>
+        </div> -->
+        <div class="col-md-9 position-relative h-100 ps-1 pe-0">
+            <div class="h-100" style="border: 1px solid var(--border-color);border-radius: 8px;">
+                <div class="p-2" style="background-color: var(--grey-color);border-top-right-radius: 8px;border-top-left-radius: 8px;">
+                    <p class="fs-16 fw-5 mb-0" style="color: var(--white-color);">{{title}}</p>
+                </div>
+
+                <div class="d-flex flex-column justify-content-start align-items-start" style="max-height: calc(100dvh - 290px);overflow-y: auto;">
+                    <div *ngFor="let item of messages" style="background: #27272a;border-radius: 8px;width: fit-content;max-width: 75% !important;border: 1px solid #ccc;" [ngClass]="item.role === 'user'? 'align-self-end p-2 m-3' : 'p-2 m-3'">
+                        <p class="text-white mb-0">{{item.content}}</p>
+                    </div>
+                </div>
+    
+                <div class="w-100 p-2 d-flex flex-row justify-content-start align-items-end gap-3" style="position: absolute;bottom: 0;">
+                    <textarea [(ngModel)]="prompt"></textarea>
+                    <button class="py-3 px-5 fs-14 fw-6" style="background-color: var(--green-color);color: #040404;border: none;width: fit-content;border-radius: 25px;"
+                    (click)="getMessageFromAgent()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

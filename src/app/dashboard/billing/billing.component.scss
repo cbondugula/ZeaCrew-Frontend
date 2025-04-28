@@ -1,14 +1,17 @@
 .billing-container {
-    background: #1A1A2E;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
+  background: var(--black-040404);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100dvh - 74px);
+  flex-grow: 1;
+
   
     .billing-title {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 10px;
-      color: #E94560;
+      color: var(--purple-text);
     }
   
     .billing-desc {
@@ -63,7 +66,7 @@
         h3 {
           font-size: 18px;
           margin-bottom: 10px;
-          color: #E94560;
+          color: var(--purple-text);
         }
   
         h2 {
@@ -78,7 +81,7 @@
         }
   
         button {
-          background: #533483;
+          background: #4d4d4d;
           color: white;
           padding: 10px;
           border: none;

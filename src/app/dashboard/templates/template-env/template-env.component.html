@@ -1,0 +1,52 @@
+<section class="container-fluid p-4" style="background-color: var(--black-color);height: calc(100dvh - 72px);">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="fs-16 fw-5 " style="color: var(--white-color);">{{title}}</h1>
+        </div>
+        <div class="col-md-12 mt-3">
+            <p class="fs-14 fw-4" style="color: var(--white-color);">{{description}}</p>
+        </div>
+        <div class="col-md-12">
+            <input class="w-100" type="text" value="{{title}}">
+        </div>
+        <div class="col-md-12 mt-3">
+            <p class="fs-14 fw-5" style="color: var(--white-color);">Required Environment Variables</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <!-- <input class="w-100" type="text" placeholder="OpenAI_KEY" name="" id=""> -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Select Provider</mat-label>
+                <mat-select [(ngModel)]="selectedProvider" name="provider" (selectionChange)="onChangeProvider($event)">
+                  <mat-option *ngFor="let item of llmProviders" [value]="item" style="color: var(--white-color)">{{ item?.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="selectedProvider">
+            <!-- <input class="w-100" type="text" placeholder="OpenAI_KEY" name="" id=""> -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Select Model</mat-label>
+                <mat-select [(ngModel)]="selectedModel" name="provider" (selectionChange)="onChangeModel($event)">
+                  <mat-option *ngFor="let item of selectedProvider.Models" [value]="item" style="color: var(--white-color)">{{ item }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 mb-3">
+            <!-- <input class="w-100" type="text" placeholder="Value"> -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Select Tool</mat-label>
+                <mat-select [(ngModel)]="selectedTool" name="provider" (selectionChange)="onChangeLLM($event)">
+                  <mat-option *ngFor="let item of tools" [value]="item?.id" style="color: var(--white-color)">{{ item?.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <!-- <div class="col-md-6">
+            <input class="w-100" type="text" placeholder="Serper_KEY" name="" id="">
+        </div>
+        <div class="col-md-6">
+            <input class="w-100" type="text" placeholder="Value">
+        </div> -->
+        <div class="col-md-12 mt-3 text-center">
+            <button class="p-3 fs-14 fw-6" style="background-color: var(--green-color);color: #040404;border: none;width: fit-content;border-radius: 25px;" (click)="onDeploy()">Deploy Template</button>
+        </div>
+    </div>
+</section>

@@ -2,9 +2,10 @@
   background: var(--black-040404);
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 100%;
+  height: calc(100dvh - 74px);
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 p {
@@ -22,12 +23,11 @@ p {
 .content-div {
   background: var(--table-bg-color);
   margin-left: 10px;
-  height: 100%;
   border-top-left-radius: 8px;
 }
 
 .card-div {
-  width: 350px;
+  width: 30%;
   border: 1px solid var(--input-bg-color);
   border-radius: 5px;
 }
