@@ -1,0 +1,229 @@
+.zea-crew-info-container {
+  background-color: var(--table-bg-color);
+  min-height: 100vh;
+  color: #fff;
+
+  .info-wrapper {
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .crew-card {
+      background-color: var(--black-color);
+      border-radius: 12px;
+
+      .crew-description {
+        .crew-title {
+          font-size: 26px;
+          color: #8e44ad;
+          font-weight: 700;
+          margin-bottom: 16px;
+        }
+
+        .crew-text {
+          font-size: 15px;
+          color: #ccc;
+          line-height: 1.6;
+          max-width: 500px;
+          text-align: justify;
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 5;
+          overflow: hidden;
+
+          line-clamp: 5;
+        }
+        .button-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-top: auto;
+
+          .edit-btn {
+            background: transparent;
+            border: 1px solid #999;
+            color: white;
+            padding: 10px 42px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            .edit-icon {
+              width: 16px;
+              height: 16px;
+            }
+          }
+
+          .deploy-btn {
+            background-color: var(--green-color);
+            color: black;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: flex;
+            gap: 6px;
+
+            .edit-icon {
+              width: 16px;
+              height: 16px;
+            }
+          }
+
+          .deploy-btn:disabled {
+            background-color: var(--grey-color);
+          }
+        }
+      }
+      .accordion.custom-accordion {
+        border-radius: 10px;
+        padding: 10px;
+
+        .accordion-item {
+          background-color: #1e1e2d; // Each item black
+          border: none;
+          margin-bottom: 8px;
+
+          .accordion-header {
+            background-color: transparent;
+          }
+          .accordion-button {
+            background: var(--purple-gradient);
+            color: var(--white-color) !important;
+            border: none;
+            border-radius: 50px !important;
+            font-size: 16px;
+            font-weight: normal;
+            border-radius: 0.5rem;
+            padding: 10px 32px;
+            transition: all 0.3s ease;
+
+            &::after {
+              filter: brightness(0) invert(1); // makes the arrow white
+            }
+
+            &:hover {
+              color: #ffffff;
+              background: linear-gradient(90deg, #7f24c6 50%, #f571df 100%);
+              opacity: 0.9;
+              transform: scale(1.02);
+            }
+
+            &:focus {
+              box-shadow: none;
+            }
+          }
+          .status-wrapper button {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #a946f7;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+              background: #a946f7;
+              color: #fff;
+            }
+          }
+          .accordion-body {
+            background-color: var(--black-color) !important; // Slightly lighter black for contrast
+            color: #fff; // Make text white
+            border-radius: 8px;
+            padding: 15px;
+          }
+          .integrations-item {
+            position: relative;
+            background-color: #272727;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+.save-btn {
+  background: linear-gradient(90deg, #a946f7 0%, #c471f5 100%);
+  color: #fff;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.action-buttons {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+
+  button {
+    background: transparent;
+    border: none;
+    // cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.delete {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(94%)
+        saturate(7500%) hue-rotate(356deg) brightness(91%) contrast(106%);
+    }
+  }
+}
+.text-purple {
+  color: var(--light-purple);
+}
+
+::ng-deep .mdc-checkbox__background {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+::ng-deep .mat-mdc-checkbox label{
+  margin-left: 10px !important;
+  margin-top: 10px !important;
+}
+
+.clamp-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+::ng-deep .mat-slide-toggle-ripple {
+  display: none;
+}
+
+.edit-btn{
+  background: transparent;
+  border: none;
+}
+
+.edit-btn img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(1);
+}

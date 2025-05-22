@@ -32,6 +32,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TemplateEnvComponent } from './templates/template-env/template-env.component';
 import { SimulationComponent } from './simulation/simulation.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { EditAgentComponent } from './home/add-new-agent/edit-agent/edit-agent.component';
+import { ZeaCrewInfoComponent } from './home/zea-crew-info/zea-crew-info.component';
+import { EditAgentTaskComponent } from './home/edit-agent-task/edit-agent-task.component';
+import { MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { ManagerAgentComponent } from './home/zea-crew-info/manager-agent/manager-agent.component';
+import { EditTemplateComponent } from './home/edit-template/edit-template.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +63,12 @@ import { SimulationComponent } from './simulation/simulation.component';
     UsageComponent,
     EditLlmComponent,
     TemplateEnvComponent,
-    SimulationComponent
+    SimulationComponent,
+    EditAgentComponent,
+    ZeaCrewInfoComponent,
+    EditAgentTaskComponent,
+    ManagerAgentComponent,
+    EditTemplateComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +81,10 @@ import { SimulationComponent } from './simulation/simulation.component';
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MarkdownModule,
+    MatDialogActions, 
+    MatDialogClose
   ],
   exports: [DashboardComponent],
 })

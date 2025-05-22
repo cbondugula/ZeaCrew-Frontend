@@ -1,0 +1,73 @@
+<div class="template-container container-fluid py-4">
+    <h1 class="fs-20 fw-5 mb-2">Manager Agent</h1>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Agent Name</label>
+          <input type="text" class="input-field" placeholder="Agent1" [(ngModel)]="agentName" />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Role</label>
+          <input
+            type="text"
+            class="input-field"
+            [(ngModel)]="role"
+          />
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <label>Goal</label>
+          <input
+            type="text"
+            class="input-field"
+            [(ngModel)]="goal"
+          />
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <label>Backstory</label>
+          <textarea class="input-field textarea" rows="3" [(ngModel)]="backstory">
+          </textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Select LLM</label>
+          <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
+            <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <div class="form-group">
+          <label>Select Integration</label>
+          <select class="input-field" [(ngModel)]="selectedIntegration">
+            <option value="Slack">Slack</option>
+          </select>
+        </div>
+      </div> -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Select Model</label>
+          <select [(ngModel)]="selectedModel" [disabled]="selectedProvider == null" class="input-field">
+            <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <div class="form-group">
+          <label>Select Tools</label>
+          <select class="input-field" [(ngModel)]="selectedTools">
+            <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+          </select>
+        </div>
+      </div> -->
+      <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
+        <button class="save-btn" (click)="saveAgent()">Save</button>
+      </div>
+    </div>
+</div>

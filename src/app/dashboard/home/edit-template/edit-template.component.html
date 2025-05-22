@@ -1,0 +1,150 @@
+<div class="template-container container-fluid p-5 position-relative">
+    <mat-dialog-actions style="position: absolute;top: 10px;right: 10px;">
+        <button mat-button mat-dialog-close
+            style="font-size: 22px;font-weight: 500;background: transparent;border: none;color: white;">X</button>
+    </mat-dialog-actions>
+    <div class="row" *ngIf="template.enum === 'CUSTOM'">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Template
+                    Title</label>
+                <input type="text" class="input-field" [(ngModel)]="template.title" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Template
+                    Description</label>
+                <input type="text" class="input-field" [(ngModel)]="template.description" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Select Agent</label>
+                <select class="input-field" name="llm" [(ngModel)]="selectedAgent" (change)="onChangeAgent($event)">
+                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.role}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="selectedAgent">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Agent
+                    Name</label>
+                <input type="text" class="input-field" [(ngModel)]="selectedAgent.agent_name" />
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Role</label>
+                <input type="text" class="input-field" [(ngModel)]="selectedAgent.role" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Goal</label>
+                <input type="text" class="input-field" [(ngModel)]="selectedAgent.goal" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Backstory</label>
+                <textarea class="input-field textarea" rows="3" [(ngModel)]="selectedAgent.backstory">
+              </textarea>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    LLM</label>
+                <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
+                    <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Model</label>
+                <select [(ngModel)]="selectedLLM" [disabled]="selectedProvider == null" class="input-field">
+                    <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Integration</label>
+                <select class="input-field" [(ngModel)]="selectedIntegration">
+                    <option value="Slack">Slack</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Tools</label>
+                <select class="input-field" [(ngModel)]="selectedTools">
+                    <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+                </select>
+            </div>
+        </div>
+        <ng-container *ngFor="let task of selectedAgent.tasks">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label
+                        style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Description</label>
+                    <input type="text" class="input-field" [(ngModel)]="task.description" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label
+                        style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Output</label>
+                    <input type="text" class="input-field" [(ngModel)]="task.expected_output" />
+                </div>
+            </div>
+            <div class="col-md-12 d-flex flex-row justify-content-end align-items-start">
+                <button class="save-btn" (click)="saveAgent()">Save Agent</button>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row" *ngIf="template.enum === 'DEFAULT'">
+        <div class="col-md-12 mt-3">
+            <p class="fs-14 fw-5" style="color: var(--white-color);">Edit Environment Variables</p>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Provider</label>
+                <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
+                    <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="selectedProvider">
+             <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Model</label>
+                <select [(ngModel)]="selectedLLM" [disabled]="selectedProvider == null" class="input-field">
+                    <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <!-- <input class="w-100" type="text" placeholder="Value"> -->
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Tools</label>
+                <select class="input-field" [(ngModel)]="selectedTools">
+                    <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 d-flex flex-row justify-content-start align-items-start">
+        <button class="save-btn" (click)="saveTemplate()">Save Template</button>
+    </div>
+</div>

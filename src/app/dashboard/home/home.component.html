@@ -1,4 +1,11 @@
-<div class="body-container">
+<div class="d-flex flex-row body-container pt-5 ps-5">
+  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--purple-mid)':'var(--light-purple)'" [style.color]="isTemplate?'var(--input-text-color)':'var(--purple-dark)'" (click)="isTemplate=!isTemplate">Template</button>
+  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--light-purple)':'var(--purple-mid)'" [style.color]="isTemplate?'var(--purple-dark)':'var(--input-text-color)'" (click)="isTemplate=!isTemplate">Zea-Crew</button>
+</div>
+
+<app-templates *ngIf="isTemplate"></app-templates>
+
+<div class="body-container" *ngIf="!isTemplate">
   <div class="heading">
     <p class="text-white fs-2">What is Zea-Crew?</p>
     <p class="text-white">
@@ -19,29 +26,29 @@
 
     <div class="d-flex flex-wrap justify-content-start">
       <div
-        class="card-div d-flex flex-column ms-3 me-3 p-3 mb-3"
+        class="card-div d-flex flex-column ms-3 me-3 p-3 mb-3 position-relative"
         *ngFor="let item of templates"
       >
-          <div class="d-flex justify-content-between ">
+      <button (click)="onDeleteTemplate(item.id)" style="border: none;background-color: transparent;background: transparent; padding: 0;position: absolute;top: 34px;right: 22px;">
+        <img src="../../../assets/images/bin.png" alt="Delete" width="18.75px" />
+        </button>
+        <button (click)="onClickEditTemplate(item)" style="border: none;background-color: transparent;background: transparent; padding: 0;position: absolute;top: 34px;right: 50px;">
+          <img src="../../../assets/images/tdesign_edit-filled.png" alt="Delete" width="18.75px" />
+        </button>
+      <div class="d-flex justify-content-start align-items-center my-3" style="gap: 8px;">
+        <button class="outlinedRoundedButton" [ngStyle]="{ '--btn-color': 'var(--yellow-color)' }">
+            {{item.enum}}
+        </button>
+                <img src="assets/gg_bot.svg" alt="icon" width="30px" height="25px" top="6px" class="mt-1"
+                    left="1.13px" />
+                    <p style="font-size: 18px;font-weight: 500;color:var(--input-text-color)">({{item.agents.length}})</p>
+      </div>
+          <div class="d-flex justify-content-start ">
             <div class="d-flex justify-content-center" style="gap: 8px;">
                 <!-- <button > -->
-                <img src="../../../assets/images/Group.png" alt="icon" width="21.75px" height="12px" top="6px" class="mt-1"
-                    left="1.13px" />
                 <!-- </button> -->
                 <div class="seachGPT text-white" style="line-height: 1.3;">{{item.title}}</div>
             </div>
-            <div class="d-flex">
-                <button (click)="onDeleteTemplate(item.id)" style="border: none;background-color: transparent;background: transparent; padding: 0;">
-                <img src="../../../assets/images/bin.png" alt="Delete" width="12.39px" height="13.05px" />
-                </button>
-                <!-- </div> -->
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-start mt-3">
-            <button class="outlinedRoundedButton" [ngStyle]="{ '--btn-color': 'var(--yellow-color)' }">
-                Default
-            </button>
         </div>
 
         <p class="text-white my-3" *ngIf="item.description">
@@ -56,8 +63,9 @@
         </div>
 
         <div class="d-flex justify-content-between">
-            <button class="filledRoundedButton me-2" [ngStyle]="{ '--btn-color': 'var(--purple-button)' }"
+            <button class="filledRoundedButton me-2 d-flex flex-row justify-content-center align-items-center" [ngStyle]="{ '--btn-color': 'var(--green-color)' }"
                 (click)="navigateToChat(item)">
+                <img src="assets/chat-icon.svg" style="width: 20px;" alt="">
                 Chat
             </button>
         </div>

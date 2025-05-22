@@ -4,6 +4,8 @@ import { HttpCallService } from '../../services/http-call.service';
 import { environment } from '../../environments/environment';
 import { SpinnerService } from '../../services/spinner.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTemplateComponent } from './edit-template/edit-template.component';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +15,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class HomeComponent implements OnInit {
   templates: any;
-  constructor(private router: Router, private httpCallService: HttpCallService,private spinner: SpinnerService,
-      private snackbar: MatSnackBar) {
-        
-      }
-  
+  constructor(private router: Router, private httpCallService: HttpCallService, private spinner: SpinnerService,
+    private snackbar: MatSnackBar, private dialog: MatDialog) {
+
+  }
+
+  isTemplate: boolean = true;
+
   goToAddAgent() {
     this.router.navigate(['/add-new-agent']);
   }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.getAllTemplates();
   }
 
@@ -50,13 +54,13 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  
-  navigateToChat(temp:any) {
-    this.router.navigate([`chat/${temp.id}`],{queryParams: {title: temp.title}});
+
+  navigateToChat(temp: any) {
+    this.router.navigate([`chat/${temp.id}`], { queryParams: { title: temp.title } });
   }
 
   getAllTemplates() {
-    this.httpCallService.getWithAuth(`${environment.api}/temp/chat-agent/enriched-all`).subscribe((res:any) => {
+    this.httpCallService.getWithAuth(`${environment.api}/temp/chat-agent/enriched-all`).subscribe((res: any) => {
       if (res['success']) {
         console.log(res);
         this.templates = res['systems'];
@@ -65,12 +69,29 @@ export class HomeComponent implements OnInit {
           duration: 3000
         })
       }
-    },(err:any)=>{
+    }, (err: any) => {
       this.spinner.hide();
       this.snackbar.open(err?.error?.message ? err.error.message : "Unknown Error Occured", "Close", {
         duration: 3000
       })
     })
   }
- 
+
+  dialogRef:any;
+
+  onClickEditTemplate(template: any) {
+    this.dialogRef = this.dialog.open(EditTemplateComponent, {
+      disableClose: true,
+      width: '70vw',
+      maxWidth: '70vw',
+      panelClass: 'transparent-dialog',
+      data: { template },
+    });
+
+    this.dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      
+    });
+  }
+
 }

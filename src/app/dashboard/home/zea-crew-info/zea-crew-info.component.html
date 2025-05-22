@@ -1,0 +1,185 @@
+<div class="zea-crew-info-container d-flex">
+  <!-- Sidebar - already part of main app layout -->
+
+  <!-- Main Content -->
+  <div class="info-wrapper w-100 p-4">
+    <h2 class="text-white mb-4 ms-4">Zea-Crew-Info</h2>
+
+    <div class="crew-card d-flex flex-wrap p-0">
+      <!-- Left side content -->
+      <div class="crew-description col-md-5 p-4" style="border-right: 1px solid var(--border-color);">
+        <h4 class="crew-title">{{templateInfo.title}}</h4>
+        <p class="text-white mt-2">
+         {{templateInfo.description}} </p>
+
+        <div class="my-5">
+          <p style="color: #8e44ad;font-size: 18px;font-weight: 500;">Select Process</p>
+          <div class="d-flex flex-row">
+            <mat-checkbox [disableRipple]="true" [(ngModel)]="sequential" name="process" (change)="onChangeButton($event,1)">Sequential</mat-checkbox>
+            <mat-checkbox [disableRipple]="true" class="me-3" [(ngModel)]="hierarchical" name="process" (change)="onChangeButton($event,2)">Hierarchical</mat-checkbox>
+          
+          </div>
+        </div>
+
+        <div class="button-wrapper text-start mt-4 ps-5">
+            <button class="deploy-btn mt-2" [disabled]="(!sequential && !hierarchical) || (hierarchical && !managerAgent)" (click)="onDeploy()">
+              <img src="assets/material-symbols_rocket.svg" alt="Deploy" class="edit-icon" />
+              Deploy
+            </button>
+        </div>
+      </div>
+
+      <div class="accordion custom-accordion col-md-7 p-4" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingAgents">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseAgents" aria-expanded="false" aria-controls="collapseAgents">
+              AGENTS
+            </button>
+          </h2>
+          <div id="collapseAgents" class="accordion-collapse" aria-labelledby="headingAgents"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row gy-4">
+                <div class="col-md-6 px-1" *ngFor="let item of template">
+                  <div class="w-100 d-flex flex-column p-3 position-relative" style="border: 1px solid #faf6f6;border-radius: 8px;">
+                    <button class="edit-btn" style="position: absolute;top: 6px;right: 36px;" (click)="onClickEditAgent(item,true)">
+                      <img src="assets/images/pencil-write.png" alt="Edit">
+                    </button>
+                    <button class="edit-btn" style="position: absolute;top: 6px;right: 6px;" (click)="onClickEditAgent(item,false)">
+                      <img src="assets/images/Group-17256.png" alt="Edit">
+                    </button>
+                    <p class="fs-18 fw-5">{{item.agentName}}</p>
+                      <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5" style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
+                      <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5" style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
+                      <div class="d-flex flex-row justify-content-start align-items-center">
+                          <p class="fs-10 fw-4 mb-0 me-2" style="color: #E69FFF;">Tool:</p>
+                          <div style="border: 1px solid #faf6f6; color: #faf6f6;border-radius: 20px;" class="p-2 fs-12 fw-5">
+                              {{item.selectedTools.name}}
+                          </div>
+                      </div>
+                      <p class="fs-10 fw-4 mt-2 mb-0 clamp-text" style="color: #faf6f6;">{{item.backstory}}</p>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="accordion-item">
+          <h2 class="accordion-header" id="headingLLM">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseLLM" aria-expanded="false" aria-controls="collapseLLM">
+              LLM
+            </button>
+          </h2>
+          <div id="collapseLLM" class="accordion-collapse collapse" aria-labelledby="headingLLM"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row gy-4">
+                <div class="col-lg-6 col-md-6" *ngFor="let llm of llmItems">
+                  <div class="integrations-item error">
+                    <div class="action-buttons">
+                      <button class="edit" (click)="onEditIntegration(llm.name)">
+                        <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+                      </button>
+                      <button class="delete" (click)="onDeleteIntegration(llm.name)">
+                        <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+                      </button>
+                    </div>
+                    <div class="content">
+                      <h5>{{ llm.name }}</h5>
+                      <p class="small">{{ llm.description }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <p class="text-purple">Provider</p>
+                        <p class="text-white small">{{ llm.provider }}</p>
+                      </div>
+                      <div>
+                        <p class="text-purple">Source</p>
+                        <p class="text-white small">{{ llm.source }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingIntegrations">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseIntegrations" aria-expanded="false" aria-controls="collapseIntegrations">
+              INTEGRATIONS
+            </button>
+          </h2>
+          <div id="collapseIntegrations" class="accordion-collapse collapse" aria-labelledby="headingIntegrations"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row gy-4">
+                <div class="col-lg-6 col-md-6" *ngFor="let integration of integrations">
+                  <div class="integrations-item">
+                    <div class="action-buttons">
+                      <button class="edit" (click)="onEditIntegration(integration.name)">
+                        <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+                      </button>
+                      <button class="delete" (click)="onDeleteIntegration(integration.name)">
+                        <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+                      </button>
+                    </div>
+                    <div class="content">
+                      <h5>
+                        <img [src]="integration.icon" [alt]="integration.name" /> {{ integration.name }}
+                      </h5>
+                      <p class="small">{{ integration.description }}</p>
+                    </div>
+                    <div class="status-wrapper mt-3 text-end">
+                      <button class="btn btn-outline-light btn-sm px-3">🔗 {{ integration.status }}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTools">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+              TOOLS
+            </button>
+          </h2>
+          <div id="collapseTools" class="accordion-collapse collapse" aria-labelledby="headingTools"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row gy-4">
+                <div class="col-lg-6 col-md-6" *ngFor="let tool of tools">
+                  <div class="integrations-item">
+                    <div class="action-buttons">
+                      <button class="edit" (click)="onEditIntegration(tool.name)">
+                        <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" />
+                      </button>
+                      <button class="delete" (click)="onDeleteIntegration(tool.name)">
+                        <img src="assets/images/bin.png" alt="Delete" width="16" height="16" />
+                      </button>
+                    </div>
+                    <div class="content">
+                      <h5>{{ tool.name }}</h5>
+                    </div>
+                    <div class=" text-purple small">
+                      Value</div>
+                    <span class="small">{{ tool.value }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="d-flex justify-content-end mt-3">
+          <button class="save-btn">Save and Update</button>
+        </div>
+      </div>

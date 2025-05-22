@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { SpinnerDialogComponent } from './spinner-dialog/spinner-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SpinnerDialogComponent],
@@ -31,7 +32,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     provideRouter(routes),
@@ -40,7 +42,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

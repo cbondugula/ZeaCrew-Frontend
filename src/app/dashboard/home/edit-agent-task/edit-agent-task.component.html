@@ -1,0 +1,102 @@
+<div class="template-container container-fluid p-5 position-relative">
+    <mat-dialog-actions style="position: absolute;top: 10px;right: 10px;">
+        <button mat-button mat-dialog-close style="font-size: 22px;font-weight: 500;background: transparent;border: none;color: white;">X</button>
+    </mat-dialog-actions>
+    <h1>{{agent.agentName}}</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+              <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Role</label>
+              <input
+                type="text"
+                class="input-field"
+                [(ngModel)]="agent.role"
+                [disabled]="!edit"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Goal</label>
+              <input
+                type="text"
+                class="input-field"
+                [(ngModel)]="agent.goal"
+                [disabled]="!edit"
+              />
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Backstory</label>
+              <textarea class="input-field textarea" rows="3" [(ngModel)]="agent.backstory" [disabled]="!edit">
+              </textarea>
+            </div>
+          </div>
+          <div class="col-md-5" style="border-right: 1px solid var(--border-color);">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select LLM</label>
+                      <select [(ngModel)]="agent.selectedProvider" class="input-field" name="llm" [disabled]="!edit">
+                        <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select Model</label>
+                      <select [(ngModel)]="agent.selectedLLM" [disabled]="agent.selectedProvider == null" class="input-field" [disabled]="!edit">
+                        <option *ngFor="let item of agent.selectedProvider?.Models" [value]="item">{{item}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select Integration</label>
+                      <select class="input-field" [disabled]="!edit" [(ngModel)]="agent.selectedIntegration">
+                        <option value="Slack">Slack</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select Tools</label>
+                      <select class="input-field" [(ngModel)]="agent.selectedTools" [disabled]="!edit">
+                        <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="row ps-4">
+                <div class="col-md-6" style="border-bottom: 1px solid var(--border-color);">
+                    <p style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);" >Task Added</p>
+                </div>
+                <div class="col-md-4" style="border-bottom: 1px solid var(--border-color);">
+                    <p style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Expected Output</p>
+                </div>
+                <div class="col-md-2" style="border-bottom: 1px solid var(--border-color);">
+
+                </div>
+            </div>
+            <div class="row ps-4">
+                <div class="col-md-6 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
+                    <p class="fs-10 fw-4 mb-0">{{agent.description}}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
+                    <p class="fs-10 fw-4 mb-0">{{agent.output}}</p>
+                </div>
+                <div class="col-md-2 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
+                    <button class="edit-btn p-2" *ngIf="edit" style="background-color: #27272A;border-radius: 6px;width: 40px;height: 40px;">
+                        <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16">
+                    </button>
+                </div>
+            </div>
+          </div>
+      <div class="col-md-12 d-flex flex-row justify-content-end align-items-start" *ngIf="edit">
+        <button class="save-btn" (click)="saveAgent()">Save and Update</button>
+      </div>
+    </div>
+</div>

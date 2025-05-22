@@ -14,7 +14,7 @@ export class SidebarComponent {
     { name: 'Integrations', route: '/integrations' },
     { name: 'Tools', route: '/tools' },
     { name: 'Environment Variables', route: '/environment-variables' },
-    { name: 'Templates', route: '/templates' },
+    // { name: 'Templates', route: '/templates' },
     { name: 'Usage', route: '/usage' },
     { name: 'Billing', route: '/billing' },
     { name: 'Settings', route: '/settings' }
@@ -24,7 +24,7 @@ export class SidebarComponent {
 
   constructor(private router: Router) {
     console.log('Navigating to /home on load');
-    this.router.navigate(['/home']);
+    // this.router.navigate(['/home']);
   }
 
   selectItem(item: any) {

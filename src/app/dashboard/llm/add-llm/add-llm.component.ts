@@ -80,7 +80,7 @@ export class AddLlmComponent implements OnInit {
   name:any="";
 
   onCheckboxChange(event: any, model: string) {
-    if (event.target.checked) {
+    if (event.checked) {
       this.selectedModels.push(model);
     } else {
       this.selectedModels = this.selectedModels.filter(m => m !== model);

@@ -112,6 +112,10 @@ span {
   font-family: "Poppins", sans-serif !important;
 }
 
+html {
+  --mat-sys-corner-extra-large: 8px !important;
+}
+
 html,
 body {
   height: 100%;

@@ -17,7 +17,10 @@
 
                 <div class="d-flex flex-column justify-content-start align-items-start" style="max-height: calc(100dvh - 290px);overflow-y: auto;">
                     <div *ngFor="let item of messages" style="background: #27272a;border-radius: 8px;width: fit-content;max-width: 75% !important;border: 1px solid #ccc;" [ngClass]="item.role === 'user'? 'align-self-end p-2 m-3' : 'p-2 m-3'">
-                        <p class="text-white mb-0">{{item.content}}</p>
+                        <!-- <p class="text-white mb-0">{{item.content}}</p> -->
+                        <markdown
+                        [data]="item.content" class="text-white">
+                        </markdown>
                     </div>
                 </div>
     

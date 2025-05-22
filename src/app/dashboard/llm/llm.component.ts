@@ -57,7 +57,8 @@ export class LlmComponent implements OnInit {
         if(response['success']) {
           this.createdLLMs = response['connections'].map((item:any) => ({...item, providerName: () => {
             const index = this.llmProviders.findIndex((i:any) => i._id === item.provider );
-            return this.llmProviders[index].provider;
+            console.log(index);
+            return this.llmProviders[index]?.provider ? this.llmProviders[index].provider : "Unknown";
           } }))
         }else {
           this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{

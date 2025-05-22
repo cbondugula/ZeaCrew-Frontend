@@ -53,7 +53,7 @@ $border-radius: 8px;
     font-weight: 500;
     border: 1px solid #444; 
     border-radius: $border-radius;
-    background: $input-bg; //transparent or $input-bg
+    background: $input-bg;
     color: $white-text;
 
     &:focus {
@@ -140,7 +140,7 @@ select:disabled {
 .save-btn {
   display: inline-block;
   margin-top: 10px;
-  width: 100px;
+  width: 190px;
   height: 46px;
   background: $button-bg;
   color: #fff;
@@ -211,41 +211,6 @@ select:disabled {
       margin-right: 5px;
       color: #000;
     }
-    .next-btn {
-      margin-top: 10px;
-      width: 88px;
-      height: 36px;
-      background: $button-bg;
-      color: #fff;
-      font-weight: 500;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      text-align: center;
-      line-height: 36px;
   }
 }
-}
-}
-
-.next-btn {
-  // display: inline-block;
-  margin-top: 10px;
-  width: 160px;
-  height: 55px;
-  background: var(--purple-gradient);
-  color: #fff;
-  // border-radius: 24px;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  text-align: center;
-  line-height: 36px; /* Vertically center text */
-
-  // &:hover {
-  //   background: color.adjust($button-bg, $lightness: -5%);
-
-  // }
 }

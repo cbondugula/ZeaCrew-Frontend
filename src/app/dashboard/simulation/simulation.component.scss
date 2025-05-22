@@ -8,3 +8,7 @@ textarea {
     color: var(--input-text-color);
     width: calc(100% - 100px);
 }
+
+::ng-deep pre {
+    white-space: break-spaces;
+}

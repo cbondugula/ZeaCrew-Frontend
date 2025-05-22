@@ -18,13 +18,14 @@ import { EditLlmComponent } from './llm/edit-llm/edit-llm.component';
 import { IntegrationsComponent } from './integrations/integrations.component';
 import { TemplateEnvComponent } from './templates/template-env/template-env.component';
 import { SimulationComponent } from './simulation/simulation.component';
+import { ZeaCrewInfoComponent } from './home/zea-crew-info/zea-crew-info.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'template-env', pathMatch: 'full' },
+      { path: '', redirectTo: 'crew-info', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'llm', component: LlmComponent },
       { path: 'add-new-llm', component: AddLlmComponent },
@@ -36,6 +37,7 @@ export const routes: Routes = [
       { path: 'build-template', component: BuildTemplateComponent },
       { path: 'deploy-template', component: DeployTemplateComponent },
       { path: 'add-new-agent', component: AddNewAgentComponent },
+      {path: 'crew-info', component: ZeaCrewInfoComponent},
       { path: 'tasks', component: TasksComponent },
       { path: 'billing', component: BillingComponent },
       { path: 'settings', component: SettingsComponent },

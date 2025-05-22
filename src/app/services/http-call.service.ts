@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -63,5 +63,12 @@ export class HttpCallService {
     } else {
       throw new Error('No token found');
     }
+  }
+
+  templateData = new BehaviorSubject<any>(null);
+  currentData:any = this.templateData.asObservable();
+
+  sendTemplateData(data: any){
+    this.templateData.next(data);
   }
 }
