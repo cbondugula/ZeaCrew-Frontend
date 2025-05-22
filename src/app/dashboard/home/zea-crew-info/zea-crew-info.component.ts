@@ -185,6 +185,7 @@ export class ZeaCrewInfoComponent {
           ],
           "max_iterations": 1,
           "max_rpm": 10,
+          "allow_delegation": false,
           "tasks": [
             {
               "description": a.description,
