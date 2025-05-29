@@ -1,6 +1,6 @@
-<div class="d-flex flex-row body-container pt-5 ps-5">
-  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--purple-mid)':'var(--light-purple)'" [style.color]="isTemplate?'var(--input-text-color)':'var(--purple-dark)'" (click)="isTemplate=!isTemplate">Template</button>
-  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--light-purple)':'var(--purple-mid)'" [style.color]="isTemplate?'var(--purple-dark)':'var(--input-text-color)'" (click)="isTemplate=!isTemplate">Zea-Crew</button>
+<div class="d-flex flex-row pt-5 ps-5" style="background-color: var(--black-040404);">
+  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--purple-mid)':'var(--light-purple)'" [style.color]="isTemplate?'var(--input-text-color)':'var(--purple-dark)'" (click)="isTemplate=true">Template</button>
+  <button class="p-3 me-3" style="font-size: 14px;font-weight: 500;border: none;border-radius: 6px;" [style.background]="isTemplate? 'var(--light-purple)':'var(--purple-mid)'" [style.color]="isTemplate?'var(--purple-dark)':'var(--input-text-color)'" (click)="isTemplate=false">Zea-Crew</button>
 </div>
 
 <app-templates *ngIf="isTemplate"></app-templates>

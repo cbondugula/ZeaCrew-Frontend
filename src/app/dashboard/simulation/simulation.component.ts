@@ -21,6 +21,7 @@ export class SimulationComponent implements OnInit {
   }
 
   messages:any = [];
+  status:any;
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
@@ -29,19 +30,31 @@ export class SimulationComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.title = params.title
     })
+    this.httpCall.getMessage('status').subscribe((item:any)=> {
+      this.status = item;
+    })
+    this.httpCall.getMessage('final_result').subscribe((item:any)=> {
+      console.log(item);
+      this.status = item;
+      // this.messages.push({content: item.result, role: 'system'})
+    })
   }
 
   prompt: any = '';
+  isLoading:boolean = false;
 
   getMessageFromAgent(){
     this.messages.push({role:"user",content: this.prompt});
     const body = {
-        "topic": this.prompt
+        "topic": this.prompt,
+        "sid": localStorage.getItem("sid")
     }
     this.prompt = '';
-    this.spinner.show("Loading...");
+    this.isLoading = true;
+    // this.spinner.show("Loading...");
         this.httpCall.postWithAuth(`${environment.api}/temp/chat-agent/crew-run/${this.id}`, body).subscribe((res:any) => {
-          this.spinner.hide();
+          // this.spinner.hide();
+          this.isLoading = false;
           this.messages.push({role: "system", content: res['final_report']});
           // if (res['success']) {
           //   console.log(res);
@@ -52,7 +65,8 @@ export class SimulationComponent implements OnInit {
           //   })
           // }
         },(err:any) => {
-          this.spinner.hide();
+          this.isLoading = false;
+          // this.spinner.hide();
           this.snackbar.open(err?.error?.message ? err.error.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })

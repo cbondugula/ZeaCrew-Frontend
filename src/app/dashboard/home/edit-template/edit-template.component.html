@@ -18,11 +18,61 @@
                 <input type="text" class="input-field" [(ngModel)]="template.description" />
             </div>
         </div>
+    </div>
+    <div class="row" *ngIf="template.manager_agent">
+        <p class="fs-14 fw-5" style="color: var(--white-color);">Manager Agent</p>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Agent
+                    Name</label>
+                <input type="text" class="input-field" [(ngModel)]="template.manager_agent.agent_name" />
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Role</label>
+                <input type="text" class="input-field" [(ngModel)]="template.manager_agent.role" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Goal</label>
+                <input type="text" class="input-field" [(ngModel)]="template.manager_agent.goal" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Backstory</label>
+                <textarea class="input-field textarea" rows="3" [(ngModel)]="template.manager_agent.backstory">
+              </textarea>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    LLM</label>
+                <select [(ngModel)]="selectedManagerProvider" class="input-field" name="llm">
+                    <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Select
+                    Model</label>
+                <select [(ngModel)]="selectedManagerLLM" [disabled]="selectedManagerProvider == null" class="input-field">
+                    <option *ngFor="let item of selectedManagerProvider?.Models" [value]="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="template.enum === 'CUSTOM'">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Select Agent</label>
                 <select class="input-field" name="llm" [(ngModel)]="selectedAgent" (change)="onChangeAgent($event)">
-                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.role}}</option>
+                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.agent_name}}</option>
                 </select>
             </div>
         </div>

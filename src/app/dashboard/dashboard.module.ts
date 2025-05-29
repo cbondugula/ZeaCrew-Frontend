@@ -39,7 +39,7 @@ import { EditAgentTaskComponent } from './home/edit-agent-task/edit-agent-task.c
 import { MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { ManagerAgentComponent } from './home/zea-crew-info/manager-agent/manager-agent.component';
 import { EditTemplateComponent } from './home/edit-template/edit-template.component';
-
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,8 @@ import { EditTemplateComponent } from './home/edit-template/edit-template.compon
     MatSnackBarModule,
     MarkdownModule,
     MatDialogActions, 
-    MatDialogClose
+    MatDialogClose,
+    TooltipModule
   ],
   exports: [DashboardComponent],
 })

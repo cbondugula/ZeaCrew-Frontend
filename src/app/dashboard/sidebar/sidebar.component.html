@@ -1,5 +1,4 @@
 <aside class="sidebar">
-  <p class="user ms-2 text-white">User</p>
   <div
     class="menu-item mb-3"
     *ngFor="let item of menuItems"
@@ -7,7 +6,7 @@
     (click)="selectItem(item)"
   >
     <div class="text-start">
-      <p class="m-3">{{ item.name }}</p>
+      <p style="margin: 0.9rem;">{{ item.name }}</p>
     </div>
   </div>
   <div
@@ -15,7 +14,7 @@
     (click)="logout()"
   >
     <div class="text-start">
-      <p class="m-3">Logout</p>
+      <p style="margin: 0.9rem;">Logout</p>
     </div>
   </div>
 </aside>

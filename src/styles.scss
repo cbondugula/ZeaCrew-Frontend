@@ -4,8 +4,19 @@
 
 @import "primeicons/primeicons.css";
 
+$dark-bg-1 : #18181b;
+$dark-bg-2 : #040404;
+$dark-bg-2-opacity : #04040480;
+$dark-color-1 : #FAF6F6;
+$dark-border-color: #4D4D4D;
+
 /* Root Color Variables */
 :root {
+  --bg-1: #{$dark-bg-1};
+  --bg-2: #{$dark-bg-2};
+  --bg-2-opacity: #{$dark-bg-2-opacity};
+  --color-1: #{$dark-color-1};
+  --border-color: #{$dark-border-color};
   --white-color: #faf6f6;
   --black-color: #1f1f1f;
   --grey-color: #3b3b3b;
@@ -48,6 +59,8 @@
   --mat-checkbox-label-text-color: #faf6f6;
   --mdc-checkbox-selected-checkmark-color: #1f1f1f;
   --mat-snack-bar-button-color: red;
+  --p-tooltip-color: #faf6f6;
+  --p-tooltip-max-width: 300px;
 }
 
 .mat-mdc-form-field {
@@ -85,6 +98,36 @@ mat-label{
   border-left: 0px !important;
 }
 
+::ng-deep .mdc-text-field--outlined{
+  height: 42px !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: var(--border-color) !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__trailing {
+  border-color: var(--border-color) !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__trailing {
+  border-color: var(--border-color) !important;
+}
 
 // .mat-mdc-form-field:hover .mdc-text-field--outlined:not(.mdc-text-field--disabled) {
 //   .mdc-notched-outline__leading,
@@ -96,6 +139,17 @@ mat-label{
 // }
 
 
+@for $i from 1 to 10 {
+    .fw-#{$i} {
+        font-weight: #{$i * 100} !important;
+    }
+}
+
+@for $i from 1 to 101 {
+    .fs-#{$i} {
+        font-size: #{$i}+'px' !important;
+    }
+}
 
 .text-white {
   color: var(--white-color);
@@ -104,6 +158,8 @@ mat-label{
 h1,
 h2,
 h3,
+h4,
+h5,
 p,
 button,
 sup,

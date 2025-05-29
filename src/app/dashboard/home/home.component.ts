@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   templates: any;
   constructor(private router: Router, private httpCallService: HttpCallService, private spinner: SpinnerService,
     private snackbar: MatSnackBar, private dialog: MatDialog) {
-
+      this.httpCallService.connect();
   }
 
   isTemplate: boolean = true;
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
-      
+      this.getAllTemplates();
     });
   }
 

@@ -167,8 +167,10 @@ export class ZeaCrewInfoComponent {
   onDeploy() {
         this.spinner.show("Loading...");
         const modifiedAgents:any = [];
+        console.log(this.template);
         this.template.forEach((a:any) => {
           modifiedAgents.push({
+            "agent": a.agentName,
             "role": a.role,
             "goal": a.goal,
           "backstory": a.backstory,

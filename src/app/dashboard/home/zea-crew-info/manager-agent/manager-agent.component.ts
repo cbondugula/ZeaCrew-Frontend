@@ -54,6 +54,7 @@ export class ManagerAgentComponent {
   
     saveAgent() {
       this.dialogRef.close({
+    "agent": this.agentName,
     "role": this.role,
     "goal": this.goal,
     "backstory": this.backstory,

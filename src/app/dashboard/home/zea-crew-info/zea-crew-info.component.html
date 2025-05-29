@@ -15,8 +15,10 @@
         <div class="my-5">
           <p style="color: #8e44ad;font-size: 18px;font-weight: 500;">Select Process</p>
           <div class="d-flex flex-row">
-            <mat-checkbox [disableRipple]="true" [(ngModel)]="sequential" name="process" (change)="onChangeButton($event,1)">Sequential</mat-checkbox>
-            <mat-checkbox [disableRipple]="true" class="me-3" [(ngModel)]="hierarchical" name="process" (change)="onChangeButton($event,2)">Hierarchical</mat-checkbox>
+            <mat-checkbox [disableRipple]="true" [(ngModel)]="sequential" name="process" (change)="onChangeButton($event,1)" 
+            pTooltip="In a sequential structure, agents perform tasks one after another in a fixed order. Each step depends on the completion of the previous one, making this approach suitable for linear processes like assembly lines or inspections." tooltipPosition="top">Sequential</mat-checkbox>
+            <mat-checkbox [disableRipple]="true" class="me-3" [(ngModel)]="hierarchical" name="process" (change)="onChangeButton($event,2)" 
+            pTooltip="In a hierarchical structure, agents are organized in levels, with higher-level agents assigning tasks to lower-level ones. This setup is ideal for complex operations that require coordination and oversight, such as robotic teams managed by a central controller." tooltipPosition="top">Hierarchical</mat-checkbox>
           
           </div>
         </div>

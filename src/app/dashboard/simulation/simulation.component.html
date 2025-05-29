@@ -22,6 +22,11 @@
                         [data]="item.content" class="text-white">
                         </markdown>
                     </div>
+                    <div *ngIf="isLoading">
+                        <ul>
+                            <li class="text-white">{{status.message}}</li>
+                         </ul>
+                    </div>
                 </div>
     
                 <div class="w-100 p-2 d-flex flex-row justify-content-start align-items-end gap-3" style="position: absolute;bottom: 0;">
