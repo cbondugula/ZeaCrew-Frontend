@@ -1,0 +1,17 @@
+.btn-green-hover {
+    color: #00FF99 !important;
+    border: 1px solid #00FF99;
+    width: 82px !important;
+    height: 36px !important;
+    background: transparent;
+    border-radius: 25px;
+}
+
+.btn-green-hover:hover {
+    color: #1F1F1F !important;
+    border: 1px solid transparent;
+    width: 82px !important;
+    height: 36px !important;
+    background: #00FF99;
+    border-radius: 25px;
+}

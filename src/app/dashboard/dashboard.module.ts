@@ -40,6 +40,14 @@ import { MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { ManagerAgentComponent } from './home/zea-crew-info/manager-agent/manager-agent.component';
 import { EditTemplateComponent } from './home/edit-template/edit-template.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { NewDemoComponent } from './home/new-demo/new-demo.component';
+import { NewDefaultTemplatesComponent } from './home/new-default-templates/new-default-templates.component';
+import { NewCreatedTemplateComponent } from './home/new-created-template/new-created-template.component';
+import { NewLlmComponent } from './llm/new-llm/new-llm.component';
+import { NewAddLlmComponent } from './llm/new-add-llm/new-add-llm.component';
+import { NewIntegrationComponent } from './integrations/new-integration/new-integration.component';
+import { NewToolsComponent } from './tools/new-tools/new-tools.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -68,7 +76,14 @@ import { TooltipModule } from 'primeng/tooltip';
     ZeaCrewInfoComponent,
     EditAgentTaskComponent,
     ManagerAgentComponent,
-    EditTemplateComponent
+    EditTemplateComponent,
+    NewDemoComponent,
+    NewDefaultTemplatesComponent,
+    NewCreatedTemplateComponent,
+    NewLlmComponent,
+    NewAddLlmComponent,
+    NewIntegrationComponent,
+    NewToolsComponent
   ],
   imports: [
     CommonModule,
@@ -85,7 +100,8 @@ import { TooltipModule } from 'primeng/tooltip';
     MarkdownModule,
     MatDialogActions, 
     MatDialogClose,
-    TooltipModule
+    TooltipModule,
+    MatStepperModule
   ],
   exports: [DashboardComponent],
 })

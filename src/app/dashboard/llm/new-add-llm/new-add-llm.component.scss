@@ -1,0 +1,19 @@
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  max-width: 100%;
+}
+
+::ng-deep .mat-mdc-checkbox {
+    -webkit-tap-highlight-color: #FFFFFF !important;
+}
+
+::ng-deep .mdc-text-field--outlined{
+  height: 42px !important;
+}
+
+::ng-deep .mat-mdc-checkbox label {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+}

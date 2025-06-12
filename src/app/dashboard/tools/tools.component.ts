@@ -80,10 +80,7 @@ export class ToolsComponent implements OnInit {
         if (response['success']) {
           console.log("Successfully added the tools")
           this.isLoading = false;
-          // const modalElement = this.modalRef.nativeElement;
-          // const modalInstance = bootstrap.Modal.getInstance(modalElement);
-          // modalInstance?.hide();
-          // this.router.navigate(['/home']);
+          this.getAllTools();
         } else {
           this.errorMessage = 'Login failed: ' + response.error;
           this.snackbar.open(response?.error ? response.error : "Unknown Error Occured", "Close", {

@@ -110,7 +110,7 @@ export class TemplateEnvComponent {
       next: (response) => {
         this.spinner.hide();
         if(response['success']) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/new-created-template']);
         }else {
           this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{
             duration: 3000

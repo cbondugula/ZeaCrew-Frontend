@@ -19,13 +19,20 @@ import { IntegrationsComponent } from './integrations/integrations.component';
 import { TemplateEnvComponent } from './templates/template-env/template-env.component';
 import { SimulationComponent } from './simulation/simulation.component';
 import { ZeaCrewInfoComponent } from './home/zea-crew-info/zea-crew-info.component';
+import { NewDemoComponent } from './home/new-demo/new-demo.component';
+import { NewDefaultTemplatesComponent } from './home/new-default-templates/new-default-templates.component';
+import { NewCreatedTemplateComponent } from './home/new-created-template/new-created-template.component';
+import { NewLlmComponent } from './llm/new-llm/new-llm.component';
+import { NewAddLlmComponent } from './llm/new-add-llm/new-add-llm.component';
+import { NewIntegrationComponent } from './integrations/new-integration/new-integration.component';
+import { NewToolsComponent } from './tools/new-tools/new-tools.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'crew-info', pathMatch: 'full' },
+      { path: '', redirectTo: 'new-created-template', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'llm', component: LlmComponent },
       { path: 'add-new-llm', component: AddLlmComponent },
@@ -45,6 +52,13 @@ export const routes: Routes = [
       // { path: '', redirectTo: 'home', pathMatch: 'full' },
       {path: 'chat/:id', component: SimulationComponent},
       { path: 'edit-llm', component: EditLlmComponent },
+      {path: 'new-demo', component: NewDemoComponent},
+      {path: 'new-default-template', component: NewDefaultTemplatesComponent},
+      {path: 'new-created-template', component: NewCreatedTemplateComponent},
+      {path: 'new-llm', component: NewLlmComponent},
+      {path: 'new-add-llm', component: NewAddLlmComponent},
+      {path: 'new-integrations', component: NewIntegrationComponent},
+      {path: 'new-tools', component: NewToolsComponent}
     ],
   },
 ];

@@ -17,7 +17,7 @@ export class SimulationComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private httpCall: HttpCallService, private spinner: SpinnerService,
       private snackbar: MatSnackBar) {
-
+        this.httpCall.connect();
   }
 
   messages:any = [];
@@ -36,7 +36,6 @@ export class SimulationComponent implements OnInit {
     this.httpCall.getMessage('final_result').subscribe((item:any)=> {
       console.log(item);
       this.status = item;
-      // this.messages.push({content: item.result, role: 'system'})
     })
   }
 

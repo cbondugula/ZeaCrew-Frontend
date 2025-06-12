@@ -61,7 +61,7 @@ export class LoginComponent {
         if (response['success']) {
           this.isLoading = false;
           localStorage.setItem('token', response.access_token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/new-created-template']);
         } else {
           this.errorMessage = 'Login failed: ' + response.error;
           this.snackbar.open(response?.error ? response.error : "Unknown Error Occured","Close",{

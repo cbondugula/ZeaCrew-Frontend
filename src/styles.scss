@@ -47,7 +47,7 @@ $dark-border-color: #4D4D4D;
   --purple-text: #b269fe;
   --purple-new: #955ad3;
   --highlight-color: #c5c5c5;
-  --purple-highlight: #ab66f1;
+  --purple-highlight: #ab65f3;
   --purple-dark: #7814b4;
   --mdc-outlined-text-field-input-text-color: #faf6f6;
   --mat-form-field-container-vertical-padding: 12px;
@@ -60,6 +60,9 @@ $dark-border-color: #4D4D4D;
   --mdc-checkbox-selected-checkmark-color: #1f1f1f;
   --mat-snack-bar-button-color: red;
   --p-tooltip-color: #faf6f6;
+  --p-tooltip-background: #040404;
+  --p-tooltip-padding: 20px;
+  --p-tooltip-border-radius: 12px;
   --p-tooltip-max-width: 300px;
 }
 
@@ -152,7 +155,7 @@ mat-label{
 }
 
 .text-white {
-  color: var(--white-color);
+  color: var(--color-1);
 }
 
 h1,
@@ -164,12 +167,16 @@ p,
 button,
 sup,
 sub,
-span {
+span,input {
   font-family: "Poppins", sans-serif !important;
 }
 
 html {
   --mat-sys-corner-extra-large: 8px !important;
+  --mat-sys-surface: var(--bg-1) !important;
+  --mat-sys-body-medium-font: "Poppins", sans-serif !important;
+  --mat-sys-primary: #7512b1 !important;
+  --mat-sys-on-surface-variant: var(--color-1) !important;
 }
 
 html,
@@ -193,9 +200,9 @@ h2 {
   height: 40px;
   padding: 8px 14px;
   border-radius: 6px;
-  border: 2px solid var(--btn-color, white);
-  background-color: #1f1f1f;
-  color: var(--btn-color, white);
+  border: 2px solid var(--purple-button);
+  background-color: transparent;
+  color: var(--purple-button);
 }
 
 .outlinedRoundedButton {
@@ -207,9 +214,9 @@ h2 {
   height: 40px;
   padding: 8px 14px;
   border-radius: 24px;
-  border: 2px solid var(--btn-color, white);
+  border: 2px solid var(--purple-button);
   background-color: #1f1f1f;
-  color: var(--btn-color, white);
+  color: var(--purple-button);
 }
 
 .filledRoundedButton {

@@ -1,6 +1,5 @@
 .zea-crew-info-container {
   background-color: var(--table-bg-color);
-  min-height: 100vh;
   color: #fff;
 
   .info-wrapper {
@@ -12,7 +11,7 @@
     }
 
     .crew-card {
-      background-color: var(--black-color);
+      background-color: var(--bg-1);
       border-radius: 12px;
 
       .crew-description {
@@ -133,8 +132,9 @@
             }
           }
           .accordion-body {
-            background-color: var(--black-color) !important; // Slightly lighter black for contrast
-            color: #fff; // Make text white
+            background-color: var(--bg-1) !important; 
+            color: #fff;
+            border: 1px solid var(--border-color) !important;
             border-radius: 8px;
             padding: 15px;
           }

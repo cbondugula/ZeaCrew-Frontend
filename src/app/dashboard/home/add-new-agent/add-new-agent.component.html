@@ -1,264 +1,500 @@
-<div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Info'">
-    <h1 class="fs-20 fw-5 mb-2">Zea-Crew Info</h1>
-    <p class="fs-14 fw-4 text-white">Create your custom AI agent tailored to your unique workflows and goals. Give it a name and describe what it does to get started.</p>
-    <div class="d-flex flex-row">
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Info'" [ngClass]="selectedTab == 'Info'? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="selectedTab == 'Info'? 'circle-select' : 'circle-unselect'">1</p> Info</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Add Agent'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">2</p> Add Agent</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Tasks'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">3</p> Tasks</button>
-    </div>
-    <div class="row">
-      <div class="col-md-9">
-        <div class="form-group">
-          <label>Crew Title</label>
-          <input
-            type="text"
-            class="input-field"
-            [(ngModel)]="title"
-          />
-        </div>
+<div class="container-fluid" style="background-color: var(--bg-2);height: calc(100dvh - 70px);overflow-y: auto;">
+  <div class="row pb-4">
+    <div class="col-md-12 px-5 pt-5 pb-4 d-flex flex-row justify-content-between align-items-center"
+      style="height: fit-content;">
+      <div>
+        <h1 class="fs-20 fw-5 text-white">Zea-Crew Info</h1>
+        <p class="fs-14 fw-4 text-white mb-0">Create your custom AI agent tailored to your unique workflows and goals.
+          Give it a name and describe what it does to get started.</p>
       </div>
-      <div class="col-md-9">
-        <div class="form-group" style="height: 160px !important;">
-          <label>Description</label>
-          <textarea class="input-field textarea" style="height: 160px !important;" rows="3" cols="15" [(ngModel)]="description">
+    </div>
+    <div class="col-md-12">
+      <div class="w-100" style="background-color: var(--bg-1);border-radius: 4px;">
+        <mat-stepper [linear]="true" #stepper style="border-radius: 12px !important;">
+          <mat-step [completed]="title && title !== '' && description && description !== ''" label="Add Template">
+            <div class="row" label="Add Template">
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label>Crew Title</label>
+                  <input type="text" class="input-field" [(ngModel)]="title" />
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group" style="height: 160px !important;">
+                  <label>Description</label>
+                  <textarea class="input-field textarea" style="height: 160px !important;" rows="3" cols="15"
+                    [(ngModel)]="description">
+                  </textarea>
+                </div>
+              </div>
+              <div class="col-md-9 text-end mt-4">
+                <button class="next-btn mt-4" style="font-size: 16px; font-weight: 500;margin-right: 0px !important;"
+                  matStepperNext (click)="saveTitle()">Next</button>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step [completed]="agents && agents?.length > 0" label="Add Agent">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Agent Name</label>
+                  <input type="text" class="input-field" placeholder="Agent1" [(ngModel)]="agentName" />
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Role</label>
+                  <input type="text" class="input-field" [(ngModel)]="role" />
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label>Goal</label>
+                  <input type="text" class="input-field" [(ngModel)]="goal" />
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label>Backstory</label>
+                  <textarea class="input-field textarea" rows="3" [(ngModel)]="backstory">
           </textarea>
-        </div>
-      </div>
-    <div class="col-md-9 text-end mt-4">
-        <button class="next-btn mt-4" style="font-size: 16px; font-weight: 500;margin-right: 0px !important;" (click)="saveTitle()">Next</button>
-    </div>
-    </div>
-  
-  </div>
-
-<div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Add Agent'">
-    <h1 class="fs-20 fw-5 mb-2">Steps to create a Zea-Crew</h1>
-    <p class="fs-14 fw-4 text-white">Build your own innovative AI agents, and streamline everyday tasks. Follow simple steps to collaborate, customize, and launch your AI agents.</p>
-    <div class="d-flex flex-row">
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Info'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">1</p> Info</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Add Agent'" [ngClass]="selectedTab == 'Add Agent'? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="selectedTab == 'Add Agent'? 'circle-select' : 'circle-unselect'">2</p> Add Agent</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Tasks'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">3</p> Tasks</button>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <div class="form-group">
-          <label>Agent Name</label>
-          <input type="text" class="input-field" placeholder="Agent1" [(ngModel)]="agentName" />
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="form-group">
-          <label>Role</label>
-          <input
-            type="text"
-            class="input-field"
-            [(ngModel)]="role"
-          />
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div class="form-group">
-          <label>Goal</label>
-          <input
-            type="text"
-            class="input-field"
-            [(ngModel)]="goal"
-          />
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div class="form-group">
-          <label>Backstory</label>
-          <textarea class="input-field textarea" rows="3" [(ngModel)]="backstory">
-          </textarea>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Select LLM</label>
-          <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
-            <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Select Integration</label>
-          <select class="input-field" [(ngModel)]="selectedIntegration">
-            <option value="Slack">Slack</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Select Model</label>
-          <select [(ngModel)]="selectedModel" [disabled]="selectedProvider == null" class="input-field">
-            <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Select Tools</label>
-          <select class="input-field" [(ngModel)]="selectedTools">
-            <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
-        <button class="save-btn" (click)="saveTemplate()">Save</button>
-      </div>
-    </div>
-  
-    <!-- <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Agent role</label>
-          <input
-            type="text"
-            class="input-field"
-            placeholder="Lorem Ipsum is simply dummy text"
-            [(ngModel)]="agentType"
-          />
-        </div>
-      </div>
-      
-    </div> -->
-
-    <hr class="w-100">
-  
-    <h2 class="added-template-title my-4" style="color: #AB65F3;">Added Agents</h2>
-    <div class="row">
-        <div class="col-md-4 px-1" *ngFor="let item of agents">
-            <div class="w-100 d-flex flex-column p-3" style="border: 1px solid #faf6f6;border-radius: 8px;">
-                <p class="fs-18 fw-5">{{item.agentName}}</p>
-                <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5" style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
-                <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5" style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
-                <div class="d-flex flex-row justify-content-start align-items-center">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select LLM</label>
+                  <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
+                    <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select Integration</label>
+                  <select class="input-field" [(ngModel)]="selectedIntegration">
+                    <option value="Slack">Slack</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select Model</label>
+                  <select [(ngModel)]="selectedModel" [disabled]="selectedProvider == null" class="input-field">
+                    <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select Tools</label>
+                  <select class="input-field" [(ngModel)]="selectedTools">
+                    <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
+                <button class="save-btn" (click)="saveTemplate()">Save</button>
+              </div>
+            </div>
+            <div class="w-100 pt-4 pb-3" *ngIf="agents.length > 0"
+              style="background-color: var(--bg-2);margin-left: -25px;margin-right: -25px;width: 108% !important;">
+              <h2 class="fs-20 fw-6" style="color: #AB65F3;">Added Agents</h2>
+            </div>
+            <div class="row pt-4" *ngIf="agents.length > 0">
+              <div class="col-md-4 px-1" *ngFor="let item of agents">
+                <div class="w-100 d-flex flex-column p-3" style="border: 1px solid #faf6f6;border-radius: 8px;">
+                  <p class="fs-18 fw-5 text-white">{{item.agentName}}</p>
+                  <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5"
+                      style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
+                  <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5"
+                      style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
+                  <div class="d-flex flex-row justify-content-start align-items-center">
                     <p class="fs-10 fw-4 mb-0 me-2" style="color: #E69FFF;">Tool:</p>
                     <div style="border: 1px solid #faf6f6; color: #faf6f6;border-radius: 20px;" class="p-2 fs-12 fw-5">
-                        {{item.selectedTools.name}}
+                      {{item.selectedTools.name}}
                     </div>
+                  </div>
+                  <p class="fs-10 fw-4 mt-2 mb-0" style="color: #faf6f6;">{{item.backstory}}</p>
                 </div>
-                <p class="fs-10 fw-4 mt-2 mb-0" style="color: #faf6f6;">{{item.backstory}}</p>
+              </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-end pe-5">
-            <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;" (click)="navigateToTask()">Next</button>
-        </div>
+            <div class="row" *ngIf="agents.length > 0">
+              <div class="col-md-12 text-end pe-5">
+                <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;" matStepperNext>Next</button>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step label="Add Task">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Agent Name</label>
+                  <select class="input-field" name="llm" [(ngModel)]="selectedAgent">
+                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.agentName}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="input-field textarea" rows="3" [(ngModel)]="agentDescription">
+          </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Expected Output</label>
+                  <input type="text" class="input-field" [(ngModel)]="agentOutput" />
+                </div>
+              </div>
+              <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
+                <button class="save-btn" (click)="saveAgent()">Save</button>
+              </div>
+            </div>
+            <div class="w-100 pt-4 pb-3" *ngIf="agents.length > 0"
+              style="background-color: var(--bg-2);margin-left: -25px;margin-right: -25px;width: 108% !important;">
+              <h2 class="fs-20 fw-6" style="color: #AB65F3;">Added Tasks</h2>
+            </div>
+            <div class="row mx-3 mt-3" style="box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.10); border-radius: 20px;">
+              <div class="col-md-4 p-2"
+                style="background-color: #1F1F1F;border-top-left-radius: 20px;border-bottom-left-radius: 20px;">
+                <p class="mb-0 fs-12 fw-5" style="color: #7512b1;">TASK</p>
+              </div>
+              <div class="col-md-2 p-2" style="background-color: #1F1F1F;">
+                <p class="mb-0 fs-12 fw-5" style="color: #7512b1;">AGENT</p>
+              </div>
+              <div class="col-md-2 p-2" style="background-color: #1F1F1F;">
+                <p class="mb-0 fs-12 fw-5" style="color: #7512b1;">LLM</p>
+              </div>
+              <div class="col-md-2 p-2" style="background-color: #1F1F1F;">
+                <p class="mb-0 fs-12 fw-5" style="color: #7512b1;">Tool</p>
+              </div>
+              <div class="col-md-2 p-2"
+                style="background-color: #1F1F1F;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
+                <p class="mb-0 fs-12 fw-5" style="color: #7512b1;">ACTION</p>
+              </div>
+            </div>
+            <div class="row mx-3" *ngFor="let agent of agents">
+              <div class="col-md-4 p-2" *ngIf="agent.description">
+                <p class="mb-0 text-white fs-12 fw-5">{{agent.description}}</p>
+              </div>
+              <div class="col-md-2 p-2" *ngIf="agent.description">
+                <p class="mb-0 text-white fs-12 fw-5">{{agent.agentName}}</p>
+              </div>
+              <div class="col-md-2 p-2" *ngIf="agent.description">
+                <p class="mb-0 text-white fs-12 fw-5">{{agent.selectedLLM}}</p>
+              </div>
+              <div class="col-md-2 p-2" *ngIf="agent.description">
+                <p class="mb-0 text-white fs-12 fw-5">{{agent.selectedTools.name}}</p>
+              </div>
+              <div class="col-md-2 p-2 d-flex gap-2" *ngIf="agent.description">
+                <button class="d-flex flex-row justify-content-center align-items-center text-white"
+                  style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;"
+                  (click)="onEditAgent(agent)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2">
+                      <path
+                        d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621" />
+                      <path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" />
+                    </g>
+                  </svg></button>
+                <button class="d-flex flex-row justify-content-center align-items-center"
+                  style="width: 30px;height: 30px;background-color: #27272A;color: #EF3826;border: none;border-radius: 6px;"
+                  (click)="onEditAgent(agent)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z" />
+                  </svg></button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-end pe-5">
+                <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;"
+                  (click)="next()">Next</button>
+              </div>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </div>
     </div>
   </div>
-  
-
-  <div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Tasks'">
-    <h1 class="fs-20 fw-5 mb-2">Why Tasks</h1>
-    <p class="fs-14 fw-4 text-white">Tasks are the building blocks for AI agents. By assigning specific actions, you guide your agents to solve real-world challenges, automate processes, and enhance productivity.</p>
-    <div class="d-flex flex-row">
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Info'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">1</p> Info</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Add Agent'" [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'"> 
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">2</p> Add Agent</button>
-        <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle" style="width: 200px;" (click)="selectedTab = 'Tasks'" [ngClass]="selectedTab == 'Tasks'? 'btn-select right-select' : 'btn-unselect right-unselect'">
-            <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center" style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="selectedTab == 'Tasks'? 'circle-select' : 'circle-unselect'">3</p> Tasks</button>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Agent Name</label>
-                <select class="input-field" name="llm"[(ngModel)]="selectedAgent" >
-                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.agentName}}</option>
-                </select>
-            </div>
-        </div>
-      <div class="col-md-9">
-        <div class="form-group">
-          <label>Description</label>
-          <textarea class="input-field textarea" rows="3" [(ngModel)]="agentDescription">
-          </textarea>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Expected Output</label>
-          <input
-            type="text"
-            class="input-field"
-            [(ngModel)]="agentOutput"
-          />
-        </div>
-      </div>
-      <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
-        <button class="save-btn" (click)="saveAgent()">Save</button>
-      </div>
-    </div>
-  
-    <!-- <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Agent role</label>
-          <input
-            type="text"
-            class="input-field"
-            placeholder="Lorem Ipsum is simply dummy text"
-            [(ngModel)]="agentType"
-          />
-        </div>
-      </div>
-      
-    </div> -->
-
-    <hr class="w-100">
-  
-    <h2 class="added-template-title my-4">Added Tasks</h2>
-
-    <div class="row mx-4" style="box-shadow: 0px 0px 15px 0px #000000; border-radius: 20px;">
-        <div class="col-md-4 p-2" style="background-color: #27272A;border-top-left-radius: 20px;border-bottom-left-radius: 20px;">
-            <p class="mb-0" style="color: #7512b1;">TASK</p>
-        </div>
-        <div class="col-md-2 p-2" style="background-color: #27272A;">
-            <p class="mb-0" style="color: #7512b1;">AGENT</p>
-        </div>
-        <div class="col-md-2 p-2" style="background-color: #27272A;">
-            <p class="mb-0" style="color: #7512b1;">LLM</p>
-        </div>
-        <div class="col-md-2 p-2" style="background-color: #27272A;">
-            <p class="mb-0" style="color: #7512b1;">Tool</p>
-        </div>
-        <div class="col-md-2 p-2" style="background-color: #27272A;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
-            <p class="mb-0" style="color: #7512b1;">ACTION</p>
-        </div>
-    </div>
-    <div class="row mx-4" *ngFor="let agent of agents">
-        <div class="col-md-4 p-2" *ngIf="agent.description">
-            <p class="mb-0 text-white">{{agent.description}}</p>
-        </div>
-        <div class="col-md-2 p-2" *ngIf="agent.description">
-            <p class="mb-0 text-white">{{agent.agentName}}</p>
-        </div>
-        <div class="col-md-2 p-2" *ngIf="agent.description">
-            <p class="mb-0 text-white">{{agent.selectedLLM}}</p>
-        </div>
-        <div class="col-md-2 p-2" *ngIf="agent.description">
-            <p class="mb-0 text-white">{{agent.selectedTools.name}}</p>
-        </div>
-        <div class="col-md-2 p-2" *ngIf="agent.description">
-            <button style="background: #27272A;border: none;border-radius: 12px;" class="me-2 p-2" (click)="onEditAgent(agent)"><img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16" /></button>
-            <button style="background: #27272A;border: none;border-radius: 12px;" class="p-2" (click)="onDeleteAgent(agent)"><img src="assets/images/bin.png" alt="Delete" width="16" height="16" /></button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-end pe-5">
-            <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;" (click)="next()">Next</button>
-        </div>
-    </div>
 </div>
-  
+
+
+<!-- <div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Info'">
+  <h1 class="fs-20 fw-5 mb-2">Zea-Crew Info</h1>
+  <p class="fs-14 fw-4 text-white">Create your custom AI agent tailored to your unique workflows and goals. Give it a
+    name and describe what it does to get started.</p>
+  <div class="d-flex flex-row">
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Info'"
+      [ngClass]="selectedTab == 'Info'? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;"
+        [ngClass]="selectedTab == 'Info'? 'circle-select' : 'circle-unselect'">1</p> Info
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Add Agent'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">2
+      </p> Add Agent
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Tasks'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">3
+      </p> Tasks
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>Crew Title</label>
+        <input type="text" class="input-field" [(ngModel)]="title" />
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group" style="height: 160px !important;">
+        <label>Description</label>
+        <textarea class="input-field textarea" style="height: 160px !important;" rows="3" cols="15"
+          [(ngModel)]="description">
+          </textarea>
+      </div>
+    </div>
+    <div class="col-md-9 text-end mt-4">
+      <button class="next-btn mt-4" style="font-size: 16px; font-weight: 500;margin-right: 0px !important;"
+        (click)="saveTitle()">Next</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Add Agent'">
+  <h1 class="fs-20 fw-5 mb-2">Steps to create a Zea-Crew</h1>
+  <p class="fs-14 fw-4 text-white">Build your own innovative AI agents, and streamline everyday tasks. Follow simple
+    steps to collaborate, customize, and launch your AI agents.</p>
+  <div class="d-flex flex-row">
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Info'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">1
+      </p> Info
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Add Agent'"
+      [ngClass]="selectedTab == 'Add Agent'? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;"
+        [ngClass]="selectedTab == 'Add Agent'? 'circle-select' : 'circle-unselect'">2</p> Add Agent
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Tasks'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">3
+      </p> Tasks
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Agent Name</label>
+        <input type="text" class="input-field" placeholder="Agent1" [(ngModel)]="agentName" />
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Role</label>
+        <input type="text" class="input-field" [(ngModel)]="role" />
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>Goal</label>
+        <input type="text" class="input-field" [(ngModel)]="goal" />
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>Backstory</label>
+        <textarea class="input-field textarea" rows="3" [(ngModel)]="backstory">
+          </textarea>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Select LLM</label>
+        <select [(ngModel)]="selectedProvider" class="input-field" name="llm">
+          <option *ngFor="let llm of llms" [ngValue]="llm">{{llm.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Select Integration</label>
+        <select class="input-field" [(ngModel)]="selectedIntegration">
+          <option value="Slack">Slack</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Select Model</label>
+        <select [(ngModel)]="selectedModel" [disabled]="selectedProvider == null" class="input-field">
+          <option *ngFor="let item of selectedProvider?.Models" [value]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Select Tools</label>
+        <select class="input-field" [(ngModel)]="selectedTools">
+          <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
+      <button class="save-btn" (click)="saveTemplate()">Save</button>
+    </div>
+  </div>
+
+  <hr class="w-100">
+
+  <h2 class="added-template-title my-4" style="color: #AB65F3;">Added Agents</h2>
+  <div class="row">
+    <div class="col-md-4 px-1" *ngFor="let item of agents">
+      <div class="w-100 d-flex flex-column p-3" style="border: 1px solid #faf6f6;border-radius: 8px;">
+        <p class="fs-18 fw-5">{{item.agentName}}</p>
+        <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5"
+            style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
+        <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5"
+            style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
+        <div class="d-flex flex-row justify-content-start align-items-center">
+          <p class="fs-10 fw-4 mb-0 me-2" style="color: #E69FFF;">Tool:</p>
+          <div style="border: 1px solid #faf6f6; color: #faf6f6;border-radius: 20px;" class="p-2 fs-12 fw-5">
+            {{item.selectedTools.name}}
+          </div>
+        </div>
+        <p class="fs-10 fw-4 mt-2 mb-0" style="color: #faf6f6;">{{item.backstory}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-end pe-5">
+      <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;"
+        (click)="navigateToTask()">Next</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="template-container container-fluid py-4" *ngIf="selectedTab == 'Tasks'">
+  <h1 class="fs-20 fw-5 mb-2">Why Tasks</h1>
+  <p class="fs-14 fw-4 text-white">Tasks are the building blocks for AI agents. By assigning specific actions, you guide
+    your agents to solve real-world challenges, automate processes, and enhance productivity.</p>
+  <div class="d-flex flex-row">
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Info'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">1
+      </p> Info
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Add Agent'"
+      [ngClass]="false? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;" [ngClass]="false? 'circle-select' : 'circle-unselect'">2
+      </p> Add Agent
+    </button>
+    <button class="p-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center button-with-triangle"
+      style="width: 200px;" (click)="selectedTab = 'Tasks'"
+      [ngClass]="selectedTab == 'Tasks'? 'btn-select right-select' : 'btn-unselect right-unselect'">
+      <p class="mb-0 me-2 fs-18 fw-5 d-flex flex-row justify-content-center align-items-center"
+        style="height: 40px;width: 40px;border-radius: 50%;"
+        [ngClass]="selectedTab == 'Tasks'? 'circle-select' : 'circle-unselect'">3</p> Tasks
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Agent Name</label>
+        <select class="input-field" name="llm" [(ngModel)]="selectedAgent">
+          <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.agentName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="input-field textarea" rows="3" [(ngModel)]="agentDescription">
+          </textarea>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Expected Output</label>
+        <input type="text" class="input-field" [(ngModel)]="agentOutput" />
+      </div>
+    </div>
+    <div class="col-md-3 d-flex flex-row justify-content-start align-items-center">
+      <button class="save-btn" (click)="saveAgent()">Save</button>
+    </div>
+  </div>
+
+  <hr class="w-100">
+
+  <h2 class="added-template-title my-4">Added Tasks</h2>
+
+  <div class="row mx-4" style="box-shadow: 0px 0px 15px 0px #000000; border-radius: 20px;">
+    <div class="col-md-4 p-2"
+      style="background-color: #27272A;border-top-left-radius: 20px;border-bottom-left-radius: 20px;">
+      <p class="mb-0" style="color: #7512b1;">TASK</p>
+    </div>
+    <div class="col-md-2 p-2" style="background-color: #27272A;">
+      <p class="mb-0" style="color: #7512b1;">AGENT</p>
+    </div>
+    <div class="col-md-2 p-2" style="background-color: #27272A;">
+      <p class="mb-0" style="color: #7512b1;">LLM</p>
+    </div>
+    <div class="col-md-2 p-2" style="background-color: #27272A;">
+      <p class="mb-0" style="color: #7512b1;">Tool</p>
+    </div>
+    <div class="col-md-2 p-2"
+      style="background-color: #27272A;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
+      <p class="mb-0" style="color: #7512b1;">ACTION</p>
+    </div>
+  </div>
+  <div class="row mx-4" *ngFor="let agent of agents">
+    <div class="col-md-4 p-2" *ngIf="agent.description">
+      <p class="mb-0 text-white">{{agent.description}}</p>
+    </div>
+    <div class="col-md-2 p-2" *ngIf="agent.description">
+      <p class="mb-0 text-white">{{agent.agentName}}</p>
+    </div>
+    <div class="col-md-2 p-2" *ngIf="agent.description">
+      <p class="mb-0 text-white">{{agent.selectedLLM}}</p>
+    </div>
+    <div class="col-md-2 p-2" *ngIf="agent.description">
+      <p class="mb-0 text-white">{{agent.selectedTools.name}}</p>
+    </div>
+    <div class="col-md-2 p-2" *ngIf="agent.description">
+      <button style="background: #27272A;border: none;border-radius: 12px;" class="me-2 p-2"
+        (click)="onEditAgent(agent)"><img src="assets/images/pencil-write.png" alt="Edit" width="16"
+          height="16" /></button>
+      <button style="background: #27272A;border: none;border-radius: 12px;" class="p-2"
+        (click)="onDeleteAgent(agent)"><img src="assets/images/bin.png" alt="Delete" width="16" height="16" /></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-end pe-5">
+      <button class="next-btn mt-4 me-5" style="font-size: 16px; font-weight: 500;" (click)="next()">Next</button>
+    </div>
+  </div>
+</div> -->

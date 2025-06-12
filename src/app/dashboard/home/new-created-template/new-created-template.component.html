@@ -1,0 +1,67 @@
+<section class="container-fluid" style="background-color: var(--bg-2);height: calc(100dvh - 70px);overflow-y: auto;">
+    <div class="row">
+        <div class="col-md-12 px-5 pt-5 pb-4 d-flex flex-row justify-content-between align-items-center"
+            style="height: fit-content;">
+            <div>
+                <h1 class="fs-20 fw-5 text-white">Dr. ZeaMed AI Templates</h1>
+                <p class="fs-14 fw-4 text-white mb-0">Create an agent by adding a name / goal, and hitting deploy! Try
+                    our examples below!</p>
+            </div>
+            <div>
+                <button class="outlinedButton" (click)="goToAddAgent()">Create Template</button>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3">
+            <div class="w-100 px-4 py-3" style="background-color: var(--bg-1);border-radius: 4px;">
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                    <p class="fs-16 fw-5" style="color: var(--purple-highlight);">Here's your cool template!</p>
+                    <p class="fs-16 fw-5 text-white" >To explore prebuild template <span style="color: var(--purple-highlight);text-decoration: underline;cursor: pointer;" [routerLink]="'/new-default-template'">Click Here</span> </p>
+                </div>
+                <div class="w-100 row">
+                    <div class="col-md-4 my-2 px-2" *ngFor="let template of templates">
+                        <div class="w-100 ps-3 py-2 pe-2 h-100"
+                            style="border: 1px solid var(--border-color);border-radius: 4px;">
+                            <div class="d-flex flex-row justify-content-start align-items-center"
+                                style="position: relative;padding-right: 78px;">
+                                <div style="width: 32px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="#E69FFF"><path d="M14.125 13h-4v2h4z"/><path fill-rule="evenodd" d="M8.125 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0-1.5a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1m10-.5a2 2 0 1 1-4 0a2 2 0 0 1 4 0m-1.5 0a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.749 14.666A6 6 0 0 0 8.125 18h8c2.44 0 4.54-1.456 5.478-3.547A3 3 0 0 0 22.875 12c0-1.013-.503-1.91-1.272-2.452A6 6 0 0 0 16.125 6h-8A6 6 0 0 0 2.75 9.334a3 3 0 0 0 0 5.332M8.125 8h8c1.384 0 2.603.702 3.322 1.77c.276.69.428 1.442.428 2.23s-.152 1.54-.428 2.23A4 4 0 0 1 16.125 16h-8a4 4 0 0 1 0-8" clip-rule="evenodd"/></g></svg>
+                                </div>
+                                <p class="fs-14 fw-5 ms-2 text-white mb-0">
+                                    {{template.title}}</p>
+                                <!-- <button class="fs-10 fw-4"
+                                    style="position: absolute;top: 0px;right: 0px;border: 2px solid #00FF99 !important;color: #00FF99 !important;
+                                width: 68px !important;height: 25px !important;background: var(--bg-1);border-radius: 25px;">
+                                    Generated
+                                </button> -->
+                                <div style="position: absolute;top: 0px;right: 0px;" class="d-flex gap-1">
+                                    <button class="d-flex flex-row justify-content-center align-items-center text-white" 
+                                style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;" 
+                                (click)="onClickEditTemplate(template)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621"/><path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3"/></g></svg></button>
+                                <button class="d-flex flex-row justify-content-center align-items-center" 
+                                style="width: 30px;height: 30px;background-color: #27272A;color: #EF3826;border: none;border-radius: 6px;"  
+                                (click)="onDeleteTemplate(template.id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg></button>
+                                </div>
+                            </div>
+                            <p class="text-white fs-12 fw-4 mt-3 mb-0" style="height: 55px;overflow: hidden;">
+                                {{template.description}}</p>
+                            <p class="fs-12 fw-4" style="color: #E69FFF;text-decoration: underline;">Read More...</p>
+                            <div class="d-flex flex-row justify-content-start align-items-center gap-4">
+                                <button class="fs-10 fw-4"
+                                    style="border: 1px solid #E69FFF !important;color: #E69FFF !important;
+                                width: fit-content !important;height: 25px !important;background: var(--bg-1);border-radius: 25px;">
+                                    {{template.search_provider}}
+                                </button>
+                            </div>
+                            <button class="fs-14 fw-4 mt-3 btn-green-hover" (click)="navigateToChat(template)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <path fill="currentColor" d="M6 7a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 7m.5 1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zM2 8a6 6 0 1 1 2.996 5.195l-2.338.78a.5.5 0 0 1-.639-.612l.712-2.491A6 6 0 0 1 2 8m6-5a5 5 0 0 0-4.3 7.552a.5.5 0 0 1 .05.393l-.509 1.78l1.658-.552a.5.5 0 0 1 .426.052A5 5 0 1 0 8 3"/>
+                                </svg>
+                                Chat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
