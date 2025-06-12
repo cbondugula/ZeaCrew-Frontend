@@ -9,14 +9,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class EditAgentComponent { 
 
-  agents:any = [];
+  agent:any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditAgentComponent>) {
     const {agent} = data;
-    this.agents.push(agent);
-    this.selectedAgent = agent;
-    this.agentDescription = agent.description;
-    this.agentOutput = agent.output;
+    this.agent =agent ;
+    this.selectedAgent = agent.agentName;
     console.log(data);
   }
 
@@ -25,6 +23,6 @@ export class EditAgentComponent {
   agentOutput:any;
 
   saveAgent() {
-    this.dialogRef.close({...this.data.agent,description: this.agentDescription, output: this.agentOutput});
+    this.dialogRef.close(this.agent);
   }
 }

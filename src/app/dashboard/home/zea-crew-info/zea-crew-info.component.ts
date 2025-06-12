@@ -7,6 +7,7 @@ import { EditAgentTaskComponent } from '../edit-agent-task/edit-agent-task.compo
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ManagerAgentComponent } from './manager-agent/manager-agent.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-zea-crew-info',
@@ -21,7 +22,7 @@ export class ZeaCrewInfoComponent {
   dialogRef: any;
 
   constructor(private httpCall: HttpCallService, private snackbar: MatSnackBar, 
-    private spinner: SpinnerService, private dialog: MatDialog, private router: Router) {
+    private spinner: SpinnerService, private dialog: MatDialog, private router: Router, private location: Location) {
     this.httpCall.currentData.subscribe((template:any)=>{
       console.log(template);
       this.template = template.agents;
@@ -185,16 +186,10 @@ export class ZeaCrewInfoComponent {
               "id": a.selectedTools.id
             }
           ],
-          "max_iterations": 1,
+          "max_iter": 1,
           "max_rpm": 10,
           "allow_delegation": false,
-          "tasks": [
-            {
-              "description": a.description,
-              "expected_output": a.output,
-              "agent_name": a.agentName
-            }
-          ]
+          "tasks": a.tasks
           })
         })
         const body = {
@@ -250,6 +245,10 @@ export class ZeaCrewInfoComponent {
             },
           });
         }
+  }
+
+  navigateBack() {
+    this.location.back();
   }
   
 }

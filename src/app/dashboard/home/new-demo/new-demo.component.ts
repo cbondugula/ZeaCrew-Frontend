@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { SpinnerService } from '../../../services/spinner.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { ShowTemplateComponent } from '../show-template/show-template.component';
 
 @Component({
   selector: 'app-new-demo',
@@ -14,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NewDemoComponent {
   templates: any;
+  dialogRef: any;
 
   constructor(private router: Router, private httpCallService: HttpCallService, private spinner: SpinnerService,
       private snackbar: MatSnackBar, private dialog: MatDialog) {
@@ -52,5 +54,15 @@ export class NewDemoComponent {
     console.log(item);
     this.router.navigate(['/template-env'],{queryParams: {id: item.id, title: item.title, description: item.description }});
   }
+
+  showTemplate(template:any) {
+        this.dialogRef = this.dialog.open(ShowTemplateComponent, {
+            disableClose: true,
+            width: '300px',
+            maxWidth: '300px',
+            panelClass: 'transparent-dialog',
+            data: { template },
+          });
+      }
 
 }

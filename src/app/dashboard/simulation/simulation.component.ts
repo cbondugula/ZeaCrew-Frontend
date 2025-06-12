@@ -4,6 +4,7 @@ import { HttpCallService } from '../../services/http-call.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerService } from '../../services/spinner.service';
 import { environment } from '../../environments/environment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-simulation',
@@ -16,7 +17,7 @@ export class SimulationComponent implements OnInit {
   title: any;
 
   constructor(private route: ActivatedRoute, private httpCall: HttpCallService, private spinner: SpinnerService,
-      private snackbar: MatSnackBar) {
+      private snackbar: MatSnackBar,private location:Location) {
         this.httpCall.connect();
   }
 
@@ -50,19 +51,9 @@ export class SimulationComponent implements OnInit {
     }
     this.prompt = '';
     this.isLoading = true;
-    // this.spinner.show("Loading...");
         this.httpCall.postWithAuth(`${environment.api}/temp/chat-agent/crew-run/${this.id}`, body).subscribe((res:any) => {
-          // this.spinner.hide();
           this.isLoading = false;
           this.messages.push({role: "system", content: res['final_report']});
-          // if (res['success']) {
-          //   console.log(res);
-          //   this.messages.push({role: "system", content: res['final_report']})
-          // } else {
-          //   this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
-          //     duration: 3000
-          //   })
-          // }
         },(err:any) => {
           this.isLoading = false;
           // this.spinner.hide();
@@ -70,6 +61,10 @@ export class SimulationComponent implements OnInit {
             duration: 3000
           })
         })
+  }
+
+  navigateBack() {
+    this.location.back();
   }
 
 }

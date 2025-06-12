@@ -1,16 +1,16 @@
 <aside class="sidebar">
-  <div
-    class="menu-item"
+  <a
     *ngFor="let item of menuItems"
-    [class.selected]="item === selectedItem"
-    (click)="selectItem(item)"
+    [routerLink]="item.route"
+    routerLinkActive="selected"
+    class="menu-item"
   >
     <div class="text-start d-flex flex-row justify-content-start align-items-center">
       <div [innerHTML]="item.icon" class="mb-1"></div>
       <p class="my-3 mx-2 fs-16 fw-4">{{ item.name }}</p>
     </div>
-  </div>
-  <div
+  </a>
+  <a
     class="menu-item"
     (click)="logout()"
   >
@@ -20,5 +20,5 @@
       </div>
       <p class="my-3 mx-2 fs-16 fw-4">Logout</p>
     </div>
-  </div>
+  </a>
 </aside>

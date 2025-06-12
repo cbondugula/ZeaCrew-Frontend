@@ -42,13 +42,14 @@
                                 (click)="onDeleteTemplate(template.id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg></button>
                                 </div>
                             </div>
-                            <p class="text-white fs-12 fw-4 mt-3 mb-0" style="height: 55px;overflow: hidden;">
+                            <p class="text-white fs-12 fw-4 mt-3 mb-0" *ngIf="template.description.length < 150">
                                 {{template.description}}</p>
-                            <p class="fs-12 fw-4" style="color: #E69FFF;text-decoration: underline;">Read More...</p>
-                            <div class="d-flex flex-row justify-content-start align-items-center gap-4">
-                                <button class="fs-10 fw-4"
-                                    style="border: 1px solid #E69FFF !important;color: #E69FFF !important;
-                                width: fit-content !important;height: 25px !important;background: var(--bg-1);border-radius: 25px;">
+                            <p class="text-white fs-12 fw-4 mt-3 mb-0 position-relative" *ngIf="template.description.length >= 150">
+                                {{template.description.substring(0,150)}} <button class="px-2 fs-12 fw-4" 
+                                style="color: #E69FFF;text-decoration: underline;border: none;background: var(--bg-1);
+                                position: absolute;bottom: 0;right: 0;" (click)="showTemplate(template)">Read More...</button></p>
+                            <div class="d-flex flex-row justify-content-start align-items-center gap-4 mt-3">
+                                <button class="btn-yellow">
                                     {{template.search_provider}}
                                 </button>
                             </div>

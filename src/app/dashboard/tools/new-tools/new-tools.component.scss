@@ -1,0 +1,53 @@
+.modal-content {
+    color: var(--color) !important;
+    background-color: var(--bg-1) !important;
+}
+
+input, select, option, select:focus, select:hover, input:focus, input:hover {
+    background-color: var(--bg-1) !important;
+    color: var(--color-1) !important;
+    border-color: var(--border-color) !important;
+}
+
+label {
+  color: #BBBBBB !important;
+}
+.btn-close{
+    --bs-btn-close-bg : none !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer{
+  border-top: none !important;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: #faf6f6;  
+  border-radius: 24px;
+  padding: 10px 32px;
+  font-weight: 400;
+  font-size: 14px;
+  border: 1px solid #4d4d4d;
+
+}
+
+.save-btn {
+  width: 116px;
+  height: 36px;
+  background: #930BC2;
+  color: #FAF6F6;
+  border-radius: 24px;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  line-height: 36px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

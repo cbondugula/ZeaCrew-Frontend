@@ -1,4 +1,4 @@
-<section class="container-fluid p-4" style="background-color: var(--black-color);height: calc(100dvh - 75px);">
+<section class="container-fluid px-4 pt-4 pb-0" style="background-color: var(--bg-2);height: calc(100dvh - 70px);">
     <div class="row h-100 px-0 justify-content-center">
         <!-- <div class="col-md-3 h-100 ps-0 pe-1" >
             <div class="h-100" style="border: 1px solid var(--border-color);border-radius: 8px;">
@@ -9,17 +9,20 @@
                 <hr class="w-100" style="border: 1px solid var(--border-color);">
             </div>
         </div> -->
-        <div class="col-md-9 position-relative h-100 ps-1 pe-0">
-            <div class="h-100" style="border: 1px solid var(--border-color);border-radius: 8px;">
-                <div class="p-2" style="background-color: var(--grey-color);border-top-right-radius: 8px;border-top-left-radius: 8px;">
-                    <p class="fs-16 fw-5 mb-0" style="color: var(--white-color);">{{title}}</p>
+        <div class="col-lg-10 col-md-9 position-relative h-100 ps-1 pe-0">
+            <div class="h-100" style="border: none;border-radius: 8px;">
+                <div class="p-3 d-flex flex-row justify-content-start align-items-center" style="background-color: var(--bg-1);border-radius: 6px;">
+                    <button class="me-3 text-white" style="background-color: transparent;border: none;" (click)="navigateBack()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z"/></svg>
+                    </button>
+                    <p class="fs-14 fw-5 mb-0" style="color: var(--white-color);">{{title}}</p>
                 </div>
 
                 <div class="d-flex flex-column justify-content-start align-items-start" style="max-height: calc(100dvh - 290px);overflow-y: auto;">
-                    <div *ngFor="let item of messages" style="background: #27272a;border-radius: 8px;width: fit-content;max-width: 75% !important;border: 1px solid #ccc;" [ngClass]="item.role === 'user'? 'align-self-end p-2 m-3' : 'p-2 m-3'">
+                    <div *ngFor="let item of messages" style="border-radius: 8px;width: fit-content;max-width: 75% !important;border: none;" [ngClass]="item.role === 'user'? 'align-self-end p-2 m-3 user-bg' : 'p-2 m-3 system-bg'">
                         <!-- <p class="text-white mb-0">{{item.content}}</p> -->
                         <markdown
-                        [data]="item.content" class="text-white">
+                        [data]="item.content" style="color: #DADADA;">
                         </markdown>
                     </div>
                     <div *ngIf="isLoading">
@@ -30,9 +33,37 @@
                 </div>
     
                 <div class="w-100 p-2 d-flex flex-row justify-content-start align-items-end gap-3" style="position: absolute;bottom: 0;">
-                    <textarea [(ngModel)]="prompt"></textarea>
-                    <button class="py-3 px-5 fs-14 fw-6" style="background-color: var(--green-color);color: #040404;border: none;width: fit-content;border-radius: 25px;"
-                    (click)="getMessageFromAgent()">Send</button>
+                    <mat-form-field appearance="outline" class="w-100 small">
+                        <textarea #inputText style="color: #faf6f6" [(ngModel)]="prompt" matInput cdkTextareaAutosize
+                          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4" placeholder="Ask an agent..."
+                          (keyup.enter)="getMessageFromAgent()"></textarea>
+                        <button mat-icon-button matSuffix class="position-relative me-2 mb-0" style="
+                            background: var(
+                              --Purple-gradient,
+                              linear-gradient(
+                                90deg,
+                                #7512b1 1.11%,
+                                #a345dc 48.15%,
+                                #dd3a95 96.32%
+                              )
+                            );
+                            height: 30px;
+                            width: 30px;
+                            border: none;
+                            border-radius: 50%;
+                          " (click)="getMessageFromAgent()">
+                          <mat-icon style="
+                              font-size: 22px !important;
+                              width: 22px;
+                              height: 22px;
+                              color: #000000 !important;
+                              position: absolute;
+                              top: 4px;
+                              left: 4px;
+                            ">arrow_upward_alt
+                            </mat-icon>
+                        </button>
+                      </mat-form-field>
                 </div>
             </div>
         </div>

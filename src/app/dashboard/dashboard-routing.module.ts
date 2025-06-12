@@ -26,6 +26,7 @@ import { NewLlmComponent } from './llm/new-llm/new-llm.component';
 import { NewAddLlmComponent } from './llm/new-add-llm/new-add-llm.component';
 import { NewIntegrationComponent } from './integrations/new-integration/new-integration.component';
 import { NewToolsComponent } from './tools/new-tools/new-tools.component';
+import { CommonModule } from '@angular/common';
 
 export const routes: Routes = [
   {

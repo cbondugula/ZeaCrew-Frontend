@@ -65,7 +65,7 @@ export class ManagerAgentComponent {
       }
     ],
     "tools": [],
-    "max_iterations": 1,
+    "max_iter": 1,
     "max_rpm": 10,
     "allow_delegation": true,
     "tasks": []

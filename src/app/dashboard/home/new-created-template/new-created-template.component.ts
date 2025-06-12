@@ -6,6 +6,7 @@ import { SpinnerService } from '../../../services/spinner.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTemplateComponent } from '../edit-template/edit-template.component';
+import { ShowTemplateComponent } from '../show-template/show-template.component';
 
 @Component({
   selector: 'app-new-created-template',
@@ -91,5 +92,15 @@ export class NewCreatedTemplateComponent {
         });
       }
     );
+  }
+
+  showTemplate(template:any) {
+    this.dialogRef = this.dialog.open(ShowTemplateComponent, {
+        disableClose: true,
+        width: '300px',
+        maxWidth: '300px',
+        panelClass: 'transparent-dialog',
+        data: { template },
+      });
   }
 }

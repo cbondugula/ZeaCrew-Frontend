@@ -16,6 +16,7 @@ $dark-border-color: #4D4D4D;
   --bg-2: #{$dark-bg-2};
   --bg-2-opacity: #{$dark-bg-2-opacity};
   --color-1: #{$dark-color-1};
+  --text-color: #{$dark-color-1};
   --border-color: #{$dark-border-color};
   --white-color: #faf6f6;
   --black-color: #1f1f1f;
@@ -154,6 +155,18 @@ mat-label{
     }
 }
 
+.btn-yellow{
+  background-color: rgba(255, 217, 29, 0.13) !important;
+  color: #DC8400 !important;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  padding: 8px;
+  border: none;
+  border-radius: 25px;
+}
+
 .text-white {
   color: var(--color-1);
 }
@@ -169,6 +182,10 @@ sup,
 sub,
 span,input {
   font-family: "Poppins", sans-serif !important;
+}
+
+label {
+  color: #BBBBBB !important;
 }
 
 html {
@@ -241,4 +258,99 @@ h2 {
   color: red !important;
   font-size: 0.875rem;
   margin-top: 5px;
+}
+
+/* PrimeNG Paginator Custom Styles */
+.p-paginator {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  
+  .p-paginator-pages {
+    .p-paginator-page {
+      background: transparent !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-color) !important;
+      min-width: 2.5rem !important;
+      height: 2.5rem !important;
+      margin: 0 0.2rem !important;
+      border-radius: 4px !important;
+      
+      &.p-highlight {
+        background-color: #e69fff !important;
+        border-color: #e69fff !important;
+        color: white !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+      
+      &:hover {
+        background: rgba(230, 159, 255, 0.1) !important;
+        border-color: #e69fff !important;
+      }
+
+      &.p-paginator-page-selected {
+        background-color: #e69fff !important;
+        border-color: #e69fff !important;
+        color: white !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+  }
+  
+  .p-paginator-first,
+  .p-paginator-prev,
+  .p-paginator-next,
+  .p-paginator-last {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    min-width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin: 0 0.2rem !important;
+    border-radius: 4px !important;
+    
+    &:hover {
+      background: rgba(230, 159, 255, 0.1) !important;
+      border-color: #e69fff !important;
+    }
+    
+    &.p-disabled {
+      opacity: 0.5 !important;
+      cursor: not-allowed !important;
+    }
+  }
+  
+  .p-dropdown {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 4px !important;
+    
+    &:hover {
+      border-color: #e69fff !important;
+    }
+  }
+
+  .p-paginator-current {
+    color: var(--text-color) !important;
+  }
+
+  .p-dropdown-label {
+    color: var(--text-color) !important;
+  }
+
+  .p-dropdown-trigger {
+    color: var(--text-color) !important;
+  }
+}
+
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background-color: #e69fff !important;
+  border-color: #e69fff !important;
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
 }

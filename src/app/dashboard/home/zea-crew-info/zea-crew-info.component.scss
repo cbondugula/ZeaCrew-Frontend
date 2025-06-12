@@ -63,10 +63,13 @@
             background-color: var(--green-color);
             color: black;
             border: none;
-            padding: 16px 32px;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 400;
+            font-size: 12px;
             display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
             gap: 6px;
 
             .edit-icon {
@@ -85,7 +88,7 @@
         padding: 10px;
 
         .accordion-item {
-          background-color: #1e1e2d; // Each item black
+          background-color: transparent; // Each item black
           border: none;
           margin-bottom: 8px;
 
@@ -100,7 +103,7 @@
             font-size: 16px;
             font-weight: normal;
             border-radius: 0.5rem;
-            padding: 10px 32px;
+            padding: 6px 16px;
             transition: all 0.3s ease;
 
             &::after {
@@ -134,7 +137,7 @@
           .accordion-body {
             background-color: var(--bg-1) !important; 
             color: #fff;
-            border: 1px solid var(--border-color) !important;
+            border: none !important;
             border-radius: 8px;
             padding: 15px;
           }
@@ -151,7 +154,7 @@
   }
 }
 .save-btn {
-  background: linear-gradient(90deg, #a946f7 0%, #c471f5 100%);
+  background: #930BC2;
   color: #fff;
   border: none;
   padding: 10px 32px;
@@ -195,14 +198,12 @@
   color: var(--light-purple);
 }
 
-::ng-deep .mdc-checkbox__background {
-  width: 30px !important;
-  height: 30px !important;
+::ng-deep .mdc-checkbox__background{
+  border: 1px solid currentColor !important;
 }
 
-::ng-deep .mat-mdc-checkbox label{
-  margin-left: 10px !important;
-  margin-top: 10px !important;
+::ng-deep .mdc-checkbox__background:hover {
+  border: 1px solid currentColor !important;
 }
 
 .clamp-text {

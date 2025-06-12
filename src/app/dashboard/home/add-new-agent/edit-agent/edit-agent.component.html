@@ -1,36 +1,35 @@
 <div class="template-container container-fluid py-4 position-relative">
   <mat-dialog-actions style="position: absolute;top: 6px;right: 6px;">
-        <button mat-button mat-dialog-close style="font-size: 22px;font-weight: 500;background: transparent;border: none;color: white;">X</button>
-    </mat-dialog-actions>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label>Agent Name</label>
-                <select class="input-field" name="llm" [(ngModel)]="selectedAgent" >
-                    <option *ngFor="let agent of agents" [ngValue]="agent">{{agent.agentName}}</option>
-                </select>
-            </div>
-        </div>
+    <button mat-button mat-dialog-close
+      style="font-size: 22px;font-weight: 500;background: transparent;border: none;color: white;">X</button>
+  </mat-dialog-actions>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Agent Name</label>
+        <select class="input-field" name="llm" [(ngModel)]="selectedAgent" [disabled]="true">
+          <option [ngValue]="selectedAgent">{{selectedAgent}}</option>
+        </select>
+      </div>
+    </div>
+    <ng-container *ngFor="let task of agent.tasks">
       <div class="col-md-12">
         <div class="form-group">
           <label>Description</label>
-          <textarea class="input-field textarea" rows="3" [(ngModel)]="agentDescription">
+          <textarea class="input-field textarea" rows="3" [(ngModel)]="task.description">
           </textarea>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label>Expected Output</label>
-          <input
-            type="text"
-            class="input-field"
-            placeholder="Lorem Ipsum is simply dummy text"
-            [(ngModel)]="agentOutput"
-          />
+          <input type="text" class="input-field" 
+            [(ngModel)]="task.expected_output" />
         </div>
       </div>
-      <div class="col-md-12 d-flex flex-row justify-content-center align-items-center">
-        <button class="save-btn" (click)="saveAgent()">Save and Update</button>
-      </div>
+    </ng-container>
+    <div class="col-md-12 d-flex flex-row justify-content-center align-items-center">
+      <button class="save-btn" (click)="saveAgent()">Save and Update</button>
     </div>
+  </div>
 </div>

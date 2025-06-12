@@ -19,8 +19,11 @@ export class NewToolsComponent {
     @ViewChild('modalRef') modalRef!: ElementRef;
   
     toolData = {
+      id: '',
       name: '',
-      api_key: ''
+      api_key: '',
+      website_url: '',
+      type: ''
     };
     selectedToolId: string = '';
   
@@ -33,6 +36,7 @@ export class NewToolsComponent {
   
     ngOnInit(): void {
       this.getAllTools();
+      this.getAllExistingTools();
     }
   
     // This method is called by (click)="navigateTomodel()"
@@ -62,10 +66,44 @@ export class NewToolsComponent {
         })
       })
     }
+
+    onChangeTool(e:any){
+      console.log(e.target.value);
+      let temp = this.existingTools.find((tool:any) => tool.name === e.target.value);
+      this.toolData.type = temp.type;
+      this.toolData.id = temp.id;
+    }
+
+    existingTools:any = [];
+
+    getAllExistingTools(){
+      this.httpCallService.getWithAuth(`${environment.api}/tls/get_toolsnames`).subscribe((res: any) => {
+        this.spinner.hide();
+        if (res['success']) {
+          console.log(res);
+          this.existingTools = res['tools'];
+          this.toolData.type = res['tools'][0].type;
+          this.toolData.id = res['tools'][0].id;
+        } else {
+          this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+            duration: 3000
+          })
+        }
+      }, (err: any) => {
+        this.spinner.hide();
+        this.snackbar.open(err?.error?.message ? err.error.message : "Unknown Error Occured", "Close", {
+          duration: 3000
+        })
+      })
+    }
+
     onEditClick(tool: any): void {
       this.toolData.name = tool.name;
       this.toolData.api_key = tool.api_key;
+      this.toolData.id = tool.id;
+      this.toolData.type = tool.type;
       this.selectedToolId = tool.id;
+      this.toolData.website_url = tool.website_url;
     }
   
     async onAddTool() {

@@ -1,14 +1,103 @@
-textarea {
-    background-color: #27272a !important;
-    border: 1px solid var(--input-border-color);
-    border-radius: 6px;
-    font-size: 12;
-    font-weight: 400;
-    padding: 14px;
-    color: var(--input-text-color);
-    width: calc(100% - 100px);
-}
-
 ::ng-deep pre {
     white-space: break-spaces;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #27272A !important;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+    display: flex;
+    align-items: center;
+}
+
+:host ::ng-deep .mat-form-field-outline-start {
+    min-width: 28px !important;
+}
+  
+:host ::ng-deep .mat-form-field-outline-end {
+    min-width: 28px !important;
+}
+  
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 10px !important;
+}
+
+:host ::ng-deep .mat-icon{
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-start {
+    border-radius: 28px 0 0 28px !important;
+    min-width: 28px !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-end {
+    border-radius: 0 28px 28px 0 !important;
+    min-width: 28px !important;
+}
+
+:host ::ng-deep .mat-icon-button{
+    padding: 0px !important;
+    border-radius: 50% !important;
+}
+  
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 8px !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 20px !important;
+}
+
+.mat-mdc-input-element{
+    font-size: 12px !important;
+    font-weight: 400;
+  }
+  
+  .mat-mdc-form-field{
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+mat-form-field.small {
+    --mat-form-field-container-height: 40px;
+    --mat-form-field-container-vertical-padding: 8px;
+  }
+
+.mat-mdc-icon-button.mat-mdc-button-base{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+::ng-deep .mat-mdc-icon-button .mat-mdc-button-touch-target{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+button.mat-icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::ng-deep .mat-mdc-button-disabled{
+    background: #4D4D4D !important;
+}
+
+.pi {
+    color: var(--color-1) !important;
+}
+
+.user-bg{
+    background: #930BC2 !important;
+}
+
+.system-bg{
+    background: #190227 !important;
+}
+
+::ng-deep p{
+    margin: 0 !important;
 }

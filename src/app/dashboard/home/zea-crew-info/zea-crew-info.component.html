@@ -3,95 +3,164 @@
     <div class="col-md-12 px-5 pt-5 pb-4 d-flex flex-row justify-content-between align-items-center"
       style="height: fit-content;">
       <div>
-        <h1 class="fs-20 fw-5 text-white">Zea-Crew Info</h1>
-        <p class="fs-14 fw-4 text-white mb-0">Create your custom AI agent tailored to your unique workflows and goals.
-          Give it a name and describe what it does to get started.</p>
+        <div class="d-flex flex-row justify-content-start align-items-center">
+          <button class="p-2 me-3 text-white"
+            style="background-color: transparent;border: 1px solid var(--border-color);" (click)="navigateBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z" />
+            </svg>
+          </button>
+          <div class="d-flex flex-column justify-content-center align-items-start">
+            <h1 class="fs-20 fw-5 text-white">Zea-Crew Info</h1>
+            <p class="fs-14 fw-4 text-white mb-0">Create your custom AI agent tailored to your unique workflows and
+              goals.
+              Give it a name and describe what it does to get started.</p>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="col-md-12" *ngIf="templateInfo">
       <div class="w-100" style="background-color: var(--bg-1);border-radius: 6px;">
         <div class="zea-crew-info-container d-flex">
-  <!-- Sidebar - already part of main app layout -->
+          <div class="info-wrapper w-100 p-4">
+            <div class="crew-card d-flex flex-wrap p-0">
+              <div class="crew-description col-md-5" style="border-right: 1px solid var(--border-color);">
+                <h4 class="crew-title fs-20 fw-5">{{templateInfo.title}}</h4>
+                <p class="text-white fs-12 fw-4">
+                  {{templateInfo.description}} </p>
 
-  <!-- Main Content -->
-  <div class="info-wrapper w-100 p-4">
-    <div class="crew-card d-flex flex-wrap p-0">
-      <!-- Left side content -->
-      <div class="crew-description col-md-5 p-4" style="border-right: 1px solid var(--border-color);">
-        <h4 class="crew-title">{{templateInfo.title}}</h4>
-        <p class="text-white mt-2">
-          {{templateInfo.description}} </p>
+                <div class="my-5">
+                  <p class="mb-1" style="color: #8e44ad;font-size: 14px;font-weight: 500;">Select Process</p>
+                  <div class="d-flex flex-row">
+                    <mat-checkbox [disableRipple]="true" [(ngModel)]="sequential" name="process"
+                      (change)="onChangeButton($event,1)"
+                      pTooltip="In a sequential structure, agents perform tasks one after another in a fixed order. Each step depends on the completion of the previous one, making this approach suitable for linear processes like assembly lines or inspections."
+                      tooltipPosition="top">Sequential</mat-checkbox>
+                    <mat-checkbox [disableRipple]="true" class="me-3" [(ngModel)]="hierarchical" name="process"
+                      (change)="onChangeButton($event,2)"
+                      pTooltip="In a hierarchical structure, agents are organized in levels, with higher-level agents assigning tasks to lower-level ones. This setup is ideal for complex operations that require coordination and oversight, such as robotic teams managed by a central controller."
+                      tooltipPosition="top">Hierarchical</mat-checkbox>
 
-        <div class="my-5">
-          <p style="color: #8e44ad;font-size: 18px;font-weight: 500;">Select Process</p>
-          <div class="d-flex flex-row">
-            <mat-checkbox [disableRipple]="true" [(ngModel)]="sequential" name="process"
-              (change)="onChangeButton($event,1)"
-              pTooltip="In a sequential structure, agents perform tasks one after another in a fixed order. Each step depends on the completion of the previous one, making this approach suitable for linear processes like assembly lines or inspections."
-              tooltipPosition="top">Sequential</mat-checkbox>
-            <mat-checkbox [disableRipple]="true" class="me-3" [(ngModel)]="hierarchical" name="process"
-              (change)="onChangeButton($event,2)"
-              pTooltip="In a hierarchical structure, agents are organized in levels, with higher-level agents assigning tasks to lower-level ones. This setup is ideal for complex operations that require coordination and oversight, such as robotic teams managed by a central controller."
-              tooltipPosition="top">Hierarchical</mat-checkbox>
+                  </div>
+                </div>
 
-          </div>
-        </div>
+                <div class="button-wrapper text-start mt-3">
+                  <button class="deploy-btn px-3 py-2"
+                    [disabled]="(!sequential && !hierarchical) || (hierarchical && !managerAgent)" (click)="onDeploy()">
+                    <img src="assets/material-symbols_rocket.svg" alt="Deploy" class="edit-icon" />
+                    Deploy
+                  </button>
+                </div>
+              </div>
 
-        <div class="button-wrapper text-start mt-4 ps-5">
-          <button class="deploy-btn mt-2" [disabled]="(!sequential && !hierarchical) || (hierarchical && !managerAgent)"
-            (click)="onDeploy()">
-            <img src="assets/material-symbols_rocket.svg" alt="Deploy" class="edit-icon" />
-            Deploy
-          </button>
-        </div>
-      </div>
-
-      <div class="accordion custom-accordion col-md-7 p-4" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingAgents">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseAgents" aria-expanded="false" aria-controls="collapseAgents">
-              AGENTS
-            </button>
-          </h2>
-          <div id="collapseAgents" class="accordion-collapse" aria-labelledby="headingAgents"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <div class="row gy-4">
-                <div class="col-md-6 px-1" *ngFor="let item of template">
-                  <div class="w-100 d-flex flex-column p-3 position-relative"
-                    style="border: 1px solid #faf6f6;border-radius: 8px;">
-                    <button class="edit-btn" style="position: absolute;top: 6px;right: 36px;"
+              <div class="accordion custom-accordion col-md-7 p-4" id="accordionExample">
+                <div class="accordion-item" *ngIf="managerAgent">
+                  <h2 class="accordion-header" id="managerAgent">
+                    <button class="accordion-button collapsed fs-12 fw-5" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#managerAgent" aria-expanded="false" aria-controls="managerAgent">
+                      MANAGER AGENT
+                    </button>
+                  </h2>
+                  <div id="managerAgent" class="accordion-collapse" aria-labelledby="managerAgent"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body mt-2">
+                      <div class="row gy-4">
+                        <div class="col-md-6 px-1">
+                          <div class="w-100 d-flex flex-column p-3 position-relative"
+                            style="border: 1px solid var(--border-color);border-radius: 6px;">
+                            <!--<button class="d-flex flex-row justify-content-center align-items-center text-white"
+                              style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;position: absolute;top: 6px;right: 40px;"
+                              (click)="onClickEditAgent(managerAgent,true)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="2">
+                                  <path
+                                    d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621" />
+                                  <path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" />
+                                </g>
+                              </svg></button>
+                            <button class="d-flex flex-row justify-content-center align-items-center"
+                              style="width: 30px;height: 30px;background-color: #27272A;color: #EF3826;border: none;border-radius: 6px;position: absolute;top: 6px;right: 6px;"
+                              (click)="onClickEditAgent(managerAgent,false)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                  d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z" />
+                              </svg></button>-->
+                            <p class="fs-18 fw-5">{{managerAgent.agent}}</p>
+                            <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5"
+                                style="color: #faf6f6;">{{managerAgent.llms[0]['model']}}</span></p>
+                            <p class="fs-10 fw-4 mt-2 mb-0 clamp-text" style="color: #faf6f6;">{{managerAgent.backstory}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingAgents">
+                    <button class="accordion-button collapsed fs-12 fw-5" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseAgents" aria-expanded="false" aria-controls="collapseAgents">
+                      AGENTS
+                    </button>
+                  </h2>
+                  <div id="collapseAgents" class="accordion-collapse" aria-labelledby="headingAgents"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body mt-2">
+                      <div class="row gy-4">
+                        <div class="col-md-6 px-1" *ngFor="let item of template">
+                          <div class="w-100 d-flex flex-column p-3 position-relative"
+                            style="border: 1px solid var(--border-color);border-radius: 6px;">
+                            <button class="d-flex flex-row justify-content-center align-items-center text-white"
+                              style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;position: absolute;top: 6px;right: 40px;"
+                              (click)="onClickEditAgent(item,true)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="2">
+                                  <path
+                                    d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621" />
+                                  <path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" />
+                                </g>
+                              </svg></button>
+                            <button class="d-flex flex-row justify-content-center align-items-center"
+                              style="width: 30px;height: 30px;background-color: #27272A;color: #EF3826;border: none;border-radius: 6px;position: absolute;top: 6px;right: 6px;"
+                              (click)="onClickEditAgent(item,false)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                  d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z" />
+                              </svg></button>
+                            <!-- <button class="edit-btn" style="position: absolute;top: 6px;right: 36px;"
                       (click)="onClickEditAgent(item,true)">
                       <img src="assets/images/pencil-write.png" alt="Edit">
                     </button>
                     <button class="edit-btn" style="position: absolute;top: 6px;right: 6px;"
                       (click)="onClickEditAgent(item,false)">
                       <img src="assets/images/Group-17256.png" alt="Edit">
-                    </button>
-                    <p class="fs-18 fw-5">{{item.agentName}}</p>
-                    <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5"
-                        style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
-                    <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5"
-                        style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
-                    <div class="d-flex flex-row justify-content-start align-items-center">
-                      <p class="fs-10 fw-4 mb-0 me-2" style="color: #E69FFF;">Tool:</p>
-                      <div style="border: 1px solid #faf6f6; color: #faf6f6;border-radius: 20px;"
-                        class="p-2 fs-12 fw-5">
-                        {{item.selectedTools.name}}
+                    </button> -->
+                            <p class="fs-18 fw-5">{{item.agentName}}</p>
+                            <p class="fs-10 fw-4" style="color: #E69FFF;">LLM: <span class="fs-12 fw-5"
+                                style="color: #faf6f6;">{{item.selectedLLM}}</span></p>
+                            <p class="fs-10 fw-4" style="color: #E69FFF;">Integration: <span class="fs-12 fw-5"
+                                style="color: #faf6f6;">{{item.selectedIntegration}}</span></p>
+                            <div class="d-flex flex-row justify-content-start align-items-center">
+                              <p class="fs-10 fw-4 mb-0 me-2" style="color: #E69FFF;">Tool:</p>
+                              <div style="border: 1px solid #faf6f6; color: #faf6f6;border-radius: 20px;"
+                                class="p-2 fs-12 fw-5">
+                                {{item.selectedTools.name}}
+                              </div>
+                            </div>
+                            <p class="fs-10 fw-4 mt-2 mb-0 clamp-text" style="color: #faf6f6;">{{item.backstory}}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <p class="fs-10 fw-4 mt-2 mb-0 clamp-text" style="color: #faf6f6;">{{item.backstory}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
         <!-- <div class="accordion-item">
           <h2 class="accordion-header" id="headingLLM">
@@ -206,7 +275,7 @@
           </div>
         </div> -->
 
-        <div class="d-flex justify-content-end mt-3">
-          <button class="save-btn">Save and Update</button>
+        <div class="d-flex justify-content-end p-3">
+          <button class="save-btn fs-14 fw-4">Save and Update</button>
         </div>
       </div>

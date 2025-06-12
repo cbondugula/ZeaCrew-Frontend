@@ -69,6 +69,12 @@ $border-radius: 8px;
   }
 }
 
+input, select, option,textarea,textarea:focus,textarea:hover,select:focus, select:hover, input:focus, input:hover {
+    background-color: var(--bg-1) !important;
+    color: var(--color-1);
+    border-color: var(--border-color) !important;
+}
+
 .button-with-triangle {
   position: relative;
   overflow: visible;
@@ -132,8 +138,33 @@ $border-radius: 8px;
   color: #fff;
 }
 
+label {
+  color: #BBBBBB !important;
+}
+
 select:disabled {
   opacity: 0.3 !important;
+}
+
+::ng-deep .mat-step-label{
+  font-family: "Poppins", sans-serif !important;
+  color: #4D4D4D !important;
+}
+
+::ng-deep .mat-step-icon{
+  background-color: #4D4D4D !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+  background-color: #7512B1 !important;
+}
+
+::ng-deep .mat-step-icon-state-edit{
+  background-color: #7512B1 !important;
+}
+
+::ng-deep .mat-step-label.mat-step-label-active{
+  color: var(--color-1) !important;
 }
 
 /* Save button styling */
@@ -141,7 +172,7 @@ select:disabled {
   display: inline-block;
   width: 89px;
   height: 36px;
-  background: #AB65F3;
+  background: #930BC2 !important;
   color: #FAF6F6;
   border-radius: 24px;
   font-weight: 400;
@@ -152,8 +183,16 @@ select:disabled {
   line-height: 36px; 
 }
 
+.save-btn:disabled {
+  background: #4d4d4d !important;
+}
+
 option {
   background-color: var(--bg-1) !important;
+}
+
+::ng-deep .mat-horizontal-content-container{
+  padding: 0 24px 0 24px !important;
 }
 
 /* 'Added Template' section title */
@@ -247,4 +286,8 @@ option {
   //   background: color.adjust($button-bg, $lightness: -5%);
 
   // }
+}
+
+.next-btn:disabled {
+  background: #4d4d4d;
 }

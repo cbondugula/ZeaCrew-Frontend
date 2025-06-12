@@ -1,6 +1,6 @@
 .checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
   max-width: 100%;
 }
@@ -16,4 +16,31 @@
 ::ng-deep .mat-mdc-checkbox label {
     font-size: 10px !important;
     font-weight: 500 !important;
+}
+
+::ng-deep .mdc-checkbox__background{
+  border: 1px solid currentColor !important;
+}
+
+::ng-deep .mdc-checkbox__background:hover {
+  border: 1px solid currentColor !important;
+}
+
+.save-btn {
+  display: inline-block;
+  width: 89px;
+  height: 36px;
+  background: #930BC2 !important;
+  color: #FAF6F6;
+  border-radius: 24px;
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  line-height: 36px; 
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+  background-color: #E69FFF !important;
 }

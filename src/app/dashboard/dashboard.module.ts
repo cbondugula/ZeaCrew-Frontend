@@ -48,6 +48,8 @@ import { NewAddLlmComponent } from './llm/new-add-llm/new-add-llm.component';
 import { NewIntegrationComponent } from './integrations/new-integration/new-integration.component';
 import { NewToolsComponent } from './tools/new-tools/new-tools.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ShowTemplateComponent } from './home/show-template/show-template.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     NewLlmComponent,
     NewAddLlmComponent,
     NewIntegrationComponent,
-    NewToolsComponent
+    NewToolsComponent,
+    ShowTemplateComponent
   ],
   imports: [
     CommonModule,
@@ -101,7 +104,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatDialogActions, 
     MatDialogClose,
     TooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    PaginatorModule
   ],
   exports: [DashboardComponent],
 })

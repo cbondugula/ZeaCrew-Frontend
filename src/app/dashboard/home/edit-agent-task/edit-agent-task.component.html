@@ -2,7 +2,7 @@
     <mat-dialog-actions style="position: absolute;top: 10px;right: 10px;">
         <button mat-button mat-dialog-close style="font-size: 22px;font-weight: 500;background: transparent;border: none;color: white;">X</button>
     </mat-dialog-actions>
-    <h1>{{agent.agentName}}</h1>
+    <h1 class="fs-20 fw-4">{{agent.agentName}}</h1>
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
@@ -70,29 +70,22 @@
             </div>
           </div>
           <div class="col-md-7">
-            <div class="row ps-4">
-                <div class="col-md-6" style="border-bottom: 1px solid var(--border-color);">
-                    <p style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);" >Task Added</p>
-                </div>
-                <div class="col-md-4" style="border-bottom: 1px solid var(--border-color);">
-                    <p style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Expected Output</p>
-                </div>
-                <div class="col-md-2" style="border-bottom: 1px solid var(--border-color);">
-
-                </div>
+            <div class="w-100 d-flex flex-row justify-content-start align-items-center">
+              <button *ngFor="let task of agent.tasks;let i = index" class="task-btn" [ngClass]="{'selected': selectedTask === i}" (click)="selectedTask = i">
+                Task {{i+1}}
+              </button>
             </div>
-            <div class="row ps-4">
-                <div class="col-md-6 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
-                    <p class="fs-10 fw-4 mb-0">{{agent.description}}</p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Task Description</label>
+                  <textarea class="input-field textarea" rows="3" [(ngModel)]="agent.tasks[selectedTask].description" [disabled]="!edit"></textarea>
                 </div>
-                <div class="col-md-4 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
-                    <p class="fs-10 fw-4 mb-0">{{agent.output}}</p>
+                <div class="form-group">
+                  <label style="font-size: 12px;font-weight: 400;color: var(--input-placeholder-color);">Expected Output</label>
+                  <textarea class="input-field textarea" rows="3" [(ngModel)]="agent.tasks[selectedTask].expected_output" [disabled]="!edit"></textarea>
                 </div>
-                <div class="col-md-2 d-flex flex-row justify-content-start align-items-center py-2" style="border-bottom: 1px solid var(--border-color);">
-                    <button class="edit-btn p-2" *ngIf="edit" style="background-color: #27272A;border-radius: 6px;width: 40px;height: 40px;">
-                        <img src="assets/images/pencil-write.png" alt="Edit" width="16" height="16">
-                    </button>
-                </div>
+              </div>
             </div>
           </div>
       <div class="col-md-12 d-flex flex-row justify-content-end align-items-start" *ngIf="edit">
