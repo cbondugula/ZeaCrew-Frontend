@@ -51,7 +51,7 @@ export class ToolsComponent implements OnInit {
         console.log(res);
         this.tools = res['tools'];
       } else {
-        this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+        this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
           duration: 3000
         })
       }
@@ -119,7 +119,7 @@ export class ToolsComponent implements OnInit {
         // this.router.navigate(['/home']);
       } else {
         console.log("response : ", res)
-        this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+        this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
           duration: 3000
         })
       }
@@ -142,7 +142,7 @@ export class ToolsComponent implements OnInit {
         console.log(res);
         this.getAllTools();
       } else {
-        this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+        this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
           duration: 3000
         })
       }

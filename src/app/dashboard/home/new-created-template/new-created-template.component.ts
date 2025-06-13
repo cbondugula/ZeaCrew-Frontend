@@ -32,9 +32,10 @@ export class NewCreatedTemplateComponent {
       if (res['success']) {
         console.log(res);
         this.templates = res['systems'];
+        console.log(this.templates);
         if(this.templates.length === 0) this.router.navigate(['/new-demo']);
       } else {
-        this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+        this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
           duration: 3000
         })
       }
@@ -80,7 +81,7 @@ export class NewCreatedTemplateComponent {
           });
           this.getAllTemplates();
         } else {
-          this.snackbar.open(res?.error ? res.error : "Unknown Error Occurred", "Close", {
+          this.snackbar.open(res?.message ? res.message : "Unknown Error Occurred", "Close", {
             duration: 3000
           });
         }

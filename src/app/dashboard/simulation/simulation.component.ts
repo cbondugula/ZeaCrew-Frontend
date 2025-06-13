@@ -53,10 +53,15 @@ export class SimulationComponent implements OnInit {
     this.isLoading = true;
         this.httpCall.postWithAuth(`${environment.api}/temp/chat-agent/crew-run/${this.id}`, body).subscribe((res:any) => {
           this.isLoading = false;
-          this.messages.push({role: "system", content: res['final_report']});
+          if(res['success']) {
+            this.messages.push({role: "system", content: res['final_report']});
+          }else{
+            this.snackbar.open(res['message'], "Close", {
+              duration: 3000
+            })
+          }
         },(err:any) => {
           this.isLoading = false;
-          // this.spinner.hide();
           this.snackbar.open(err?.error?.message ? err.error.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })

@@ -55,7 +55,7 @@ export class NewToolsComponent {
           console.log(res);
           this.tools = res['tools'];
         } else {
-          this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+          this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })
         }
@@ -85,7 +85,7 @@ export class NewToolsComponent {
           this.toolData.type = res['tools'][0].type;
           this.toolData.id = res['tools'][0].id;
         } else {
-          this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+          this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })
         }
@@ -149,15 +149,12 @@ export class NewToolsComponent {
       this.spinner.show("Loading....");
       this.httpCallService.putWithAuth(`${environment.api}/tls/tools/${this.selectedToolId}`, this.toolData).subscribe((res: any) => {
         this.spinner.hide();
-        var myModal = new bootstrap.Modal(document.getElementById('#editToolsModal'), {});
-        myModal.hide();
         if (res['success']) {
           console.log("edit is successfully completed..");
           this.getAllTools();
-          // this.router.navigate(['/home']);
         } else {
           console.log("response : ", res)
-          this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+          this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })
         }
@@ -180,7 +177,7 @@ export class NewToolsComponent {
           console.log(res);
           this.getAllTools();
         } else {
-          this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+          this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
             duration: 3000
           })
         }

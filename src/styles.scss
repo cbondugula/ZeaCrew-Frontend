@@ -167,8 +167,12 @@ mat-label{
   border-radius: 25px;
 }
 
-.text-white {
-  color: var(--color-1);
+.white-text {
+  color: var(--color-1) !important;
+}
+
+.white-text-2 {
+  color: #DADADA !important;
 }
 
 h1,

@@ -4,7 +4,7 @@
       style="height: fit-content;">
       <div>
         <div class="d-flex flex-row justify-content-start align-items-center">
-          <button class="p-2 me-3 text-white"
+          <button class="p-2 me-3 white-text"
             style="background-color: transparent;border: 1px solid var(--border-color);" (click)="navigateBack()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path fill="currentColor"
@@ -12,8 +12,8 @@
             </svg>
           </button>
           <div class="d-flex flex-column justify-content-center align-items-start">
-            <h1 class="fs-20 fw-5 text-white">Zea-Crew Info</h1>
-            <p class="fs-14 fw-4 text-white mb-0">Create your custom AI agent tailored to your unique workflows and
+            <h1 class="fs-20 fw-5 white-text">Zea-Crew Info</h1>
+            <p class="fs-14 fw-4 white-text mb-0">Create your custom AI agent tailored to your unique workflows and
               goals.
               Give it a name and describe what it does to get started.</p>
           </div>
@@ -28,7 +28,7 @@
             <div class="crew-card d-flex flex-wrap p-0">
               <div class="crew-description col-md-5" style="border-right: 1px solid var(--border-color);">
                 <h4 class="crew-title fs-20 fw-5">{{templateInfo.title}}</h4>
-                <p class="text-white fs-12 fw-4">
+                <p class="white-text fs-12 fw-4">
                   {{templateInfo.description}} </p>
 
                 <div class="my-5">
@@ -70,7 +70,7 @@
                         <div class="col-md-6 px-1">
                           <div class="w-100 d-flex flex-column p-3 position-relative"
                             style="border: 1px solid var(--border-color);border-radius: 6px;">
-                            <!--<button class="d-flex flex-row justify-content-center align-items-center text-white"
+                            <!--<button class="d-flex flex-row justify-content-center align-items-center white-text"
                               style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;position: absolute;top: 6px;right: 40px;"
                               (click)="onClickEditAgent(managerAgent,true)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@
                         <div class="col-md-6 px-1" *ngFor="let item of template">
                           <div class="w-100 d-flex flex-column p-3 position-relative"
                             style="border: 1px solid var(--border-color);border-radius: 6px;">
-                            <button class="d-flex flex-row justify-content-center align-items-center text-white"
+                            <button class="d-flex flex-row justify-content-center align-items-center white-text"
                               style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;position: absolute;top: 6px;right: 40px;"
                               (click)="onClickEditAgent(item,true)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24">
@@ -190,11 +190,11 @@
                     <div class="d-flex justify-content-between">
                       <div>
                         <p class="text-purple">Provider</p>
-                        <p class="text-white small">{{ llm.provider }}</p>
+                        <p class="white-text small">{{ llm.provider }}</p>
                       </div>
                       <div>
                         <p class="text-purple">Source</p>
-                        <p class="text-white small">{{ llm.source }}</p>
+                        <p class="white-text small">{{ llm.source }}</p>
                       </div>
                     </div>
                   </div>

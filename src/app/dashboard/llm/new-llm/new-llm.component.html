@@ -3,8 +3,8 @@
         <div class="col-md-12 px-5 pt-5 pb-4 d-flex flex-row justify-content-between align-items-center"
             style="height: fit-content;">
             <div>
-                <h1 class="fs-20 fw-5 text-white">What is LLM?</h1>
-                <p class="fs-14 fw-4 text-white mb-0"> LLM (Large Language Model) are advanced AI models that understand and generate human-like text. They enable natural language understanding and provide intelligent responses, automating tasks like chat interactions, data analysis, and content generation.</p>
+                <h1 class="fs-20 fw-5 white-text">What is LLM?</h1>
+                <p class="fs-14 fw-4 white-text mb-0"> LLM (Large Language Model) are advanced AI models that understand and generate human-like text. They enable natural language understanding and provide intelligent responses, automating tasks like chat interactions, data analysis, and content generation.</p>
             </div>
         </div>
         <div class="col-md-12 mt-3">
@@ -18,9 +18,9 @@
                         <div class="w-100 p-3 h-100"
                             style="border: 1px solid var(--border-color);border-radius: 4px;">
                             <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-white fs-14 fw-5 mb-0">{{item.name}}</p>
+                            <p class="white-text fs-14 fw-5 mb-0">{{item.name}}</p>
                             <div class="d-flex gap-2">
-                                <button class="d-flex flex-row justify-content-center align-items-center text-white" 
+                                <button class="d-flex flex-row justify-content-center align-items-center white-text" 
                                 style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;" 
                                 [routerLink]="['/edit-llm']" (click)="onClickEditLLM(item)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621"/><path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3"/></g></svg></button>
                                 <button class="d-flex flex-row justify-content-center align-items-center" 
@@ -28,15 +28,15 @@
                                 (click)="deleteLlm(item._id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg></button>
                             </div>
                             </div>
-                            <p class="text-white"></p>
+                            <p class="white-text"></p>
                             <div class="d-flex justify-content-between">
                             <div>
                                 <p class="fs-12 fw-5 mb-2" style="color: #E69FFF;">Provider</p>
-                                <p class="fs-10 fw-5 text-white mb-0">{{item.providerName()}}</p>
+                                <p class="fs-10 fw-5 white-text mb-0">{{item.providerName()}}</p>
                             </div>
                             <div>
                                 <p class="fs-12 fw-5 mb-2" style="color: #E69FFF;">Source</p>
-                                <p class="fs-10 fw-5 text-white mb-0">-</p>
+                                <p class="fs-10 fw-5 white-text mb-0">-</p>
                             </div>
                             </div>
                         </div>

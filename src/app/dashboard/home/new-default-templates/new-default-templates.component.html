@@ -4,18 +4,18 @@
             style="height: fit-content;">
             <div>
                 <div class="d-flex flex-row justify-content-start align-items-center">
-                    <button class="p-2 me-3 text-white" style="background-color: transparent;border: 1px solid var(--border-color);" (click)="navigateBack()">
+                    <button class="p-2 me-3 white-text" style="background-color: transparent;border: 1px solid var(--border-color);" (click)="navigateBack()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z"/></svg>
                     </button>
                     <div class="d-flex flex-column justify-content-center align-items-start">
-                        <h1 class="fs-14 fw-4 text-white mt-2 mb-1">Dr. ZeaMed AI Templates</h1>
-                        <p class="fs-20 fw-5 text-white mb-0">Default AI Templates </p>
+                        <h1 class="fs-14 fw-4 white-text mt-2 mb-1">Dr. ZeaMed AI Templates</h1>
+                        <p class="fs-20 fw-5 white-text mb-0">Default AI Templates </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-12 mt-3">
-            <div class="w-100 px-4 py-3" style="background-color: var(--bg-1);border-radius: 4px;">
+            <div class="px-4 py-3" style="background-color: var(--bg-1);border-radius: 4px;">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <p class="fs-16 fw-5" style="color: var(--purple-highlight);">Go with the Default Template!</p>
                 </div>
@@ -28,7 +28,7 @@
                                 <div style="width: 32px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="#E69FFF"><path d="M14.125 13h-4v2h4z"/><path fill-rule="evenodd" d="M8.125 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0-1.5a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1m10-.5a2 2 0 1 1-4 0a2 2 0 0 1 4 0m-1.5 0a.5.5 0 1 1-1 0a.5.5 0 0 1 1 0" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.749 14.666A6 6 0 0 0 8.125 18h8c2.44 0 4.54-1.456 5.478-3.547A3 3 0 0 0 22.875 12c0-1.013-.503-1.91-1.272-2.452A6 6 0 0 0 16.125 6h-8A6 6 0 0 0 2.75 9.334a3 3 0 0 0 0 5.332M8.125 8h8c1.384 0 2.603.702 3.322 1.77c.276.69.428 1.442.428 2.23s-.152 1.54-.428 2.23A4 4 0 0 1 16.125 16h-8a4 4 0 0 1 0-8" clip-rule="evenodd"/></g></svg>
                                 </div>
-                                <p class="fs-14 fw-5 ms-2 text-white mb-0">
+                                <p class="fs-14 fw-5 ms-2 white-text mb-0">
                                     {{template.title}}</p>
                                 <button class="fs-10 fw-4"
                                     style="position: absolute;top: 0px;right: 0px;border: 1px solid var(--yellow-color) !important;color: var(--yellow-color) !important;
@@ -36,9 +36,9 @@
                                     Default
                                 </button>
                             </div>
-                            <p class="text-white fs-12 fw-4 mt-3 mb-0" *ngIf="template.description.length < 150">
+                            <p class="white-text fs-12 fw-4 mt-3 mb-0" *ngIf="template.description.length < 150">
                                 {{template.description}}</p>
-                            <p class="text-white fs-12 fw-4 mt-3 mb-0 position-relative" *ngIf="template.description.length >= 150">
+                            <p class="white-text fs-12 fw-4 mt-3 mb-0 position-relative" *ngIf="template.description.length >= 150">
                                 {{template.description.substring(0,150)}} <button class="px-2 fs-12 fw-4" 
                                 style="color: #E69FFF;text-decoration: underline;border: none;background: var(--bg-1);
                                 position: absolute;bottom: 0;right: 0;" (click)="showTemplate(template)">Read More...</button></p>

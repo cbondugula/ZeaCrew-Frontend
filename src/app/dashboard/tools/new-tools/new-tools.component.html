@@ -3,8 +3,8 @@
         <div class="col-md-12 px-5 pt-5 pb-4 d-flex flex-row justify-content-between align-items-center"
             style="height: fit-content;">
             <div>
-                <h1 class="fs-20 fw-5 text-white">What is Tools?</h1>
-                <p class="fs-14 fw-4 text-white mb-0"> Tools are AI-powered services designed to perform specific tasks, such as data extraction, automation, or analysis. They help streamline processes by integrating with systems to enhance functionality and improve efficiency.</p>
+                <h1 class="fs-20 fw-5 white-text">What is Tools?</h1>
+                <p class="fs-14 fw-4 white-text mb-0"> Tools are AI-powered services designed to perform specific tasks, such as data extraction, automation, or analysis. They help streamline processes by integrating with systems to enhance functionality and improve efficiency.</p>
             </div>
         </div>
         <div class="col-md-12 mt-3">
@@ -18,9 +18,9 @@
                         <div class="w-100 p-3 h-100"
                             style="border: 1px solid var(--border-color);border-radius: 4px;">
                             <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-white fs-14 fw-5 mb-0">{{item.name}}</p>
+                            <p class="white-text fs-14 fw-5 mb-0">{{item.name}}</p>
                             <div class="d-flex gap-2">
-                                <button class="d-flex flex-row justify-content-center align-items-center text-white" 
+                                <button class="d-flex flex-row justify-content-center align-items-center white-text" 
                                 style="width: 30px;height: 30px;background-color: #27272A;border: none;border-radius: 6px;" 
                                 data-bs-toggle="modal" data-bs-target="#editToolsModal"  (click)="onEditClick(item)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16.475 5.408l2.117 2.117m-.756-3.982L12.109 9.27a2.1 2.1 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621"/><path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3"/></g></svg></button>
                                 <button class="d-flex flex-row justify-content-center align-items-center" 
@@ -28,17 +28,17 @@
                                 (click)="onDeleteTool(item.id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg></button>
                             </div>
                             </div>
-                            <p class="text-white"></p>
+                            <p class="white-text"></p>
                             <div>
                                 <div class="w-100">
                                     <p class="fs-12 fw-5 mb-1" style="color: #E69FFF;">Tool Name</p>
-                                    <p class="fs-10 fw-5 text-white mb-0" *ngIf="item?.tool_name">{{item.tool_name}}</p>
-                                    <p class="fs-10 fw-5 text-white mb-0" *ngIf="!item?.tool_name">N/A</p>
+                                    <p class="fs-10 fw-5 white-text mb-0" *ngIf="item?.tool_name">{{item.tool_name}}</p>
+                                    <p class="fs-10 fw-5 white-text mb-0" *ngIf="!item?.tool_name">N/A</p>
                                 </div>
                                 <div class="w-100 mt-3">
                                     <p class="fs-12 fw-5 mb-1" style="color: #E69FFF;">Value</p>
-                                    <p class="fs-10 fw-5 text-white mb-0" *ngIf="item.type === 'secret'">***********************{{item.api_key.slice(-4)}}</p>
-                                    <p class="fs-10 fw-5 text-white mb-0" *ngIf="item.type === 'url'">{{item.website_url}}</p>
+                                    <p class="fs-10 fw-5 white-text mb-0" *ngIf="item.type === 'secret'">***********************{{item.api_key.slice(-4)}}</p>
+                                    <p class="fs-10 fw-5 white-text mb-0" *ngIf="item.type === 'url'">{{item.website_url}}</p>
                                 </div>
                             </div>
                         </div>
@@ -53,29 +53,29 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content dark-theme">
       <div class="modal-header"> 
-        <h2 class="fs-20 fw-5 text-white" id="addToolsModalLabel">Edit Tool</h2>
+        <h2 class="fs-20 fw-5 white-text" id="addToolsModalLabel">Edit Tool</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #FAF6F6;">X</button>
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onEditTool()" #toolForm="ngForm">
           <div class="mb-3">
-            <label for="toolKey" class="fs-14 fw-4 text-white">Key Name</label>
+            <label for="toolKey" class="fs-14 fw-4 white-text">Key Name</label>
             <input type="text" class="form-control" id="toolKey" name="key" [(ngModel)]="toolData.name"
               placeholder="Key" required>
           </div>
           <div class="mb-3" *ngIf="toolData.type === 'secret'">
-            <label for="toolValue" class="fs-14 fw-4 text-white">Value</label>
+            <label for="toolValue" class="fs-14 fw-4 white-text">Value</label>
             <input type="text" class="form-control" id="toolValue" name="value" [(ngModel)]="toolData.api_key"
               placeholder="Value" required>
           </div>
           <div class="mb-3" *ngIf="toolData.type === 'url'">
-            <label for="toolValue" class="fs-14 fw-4 text-white">URL</label>
+            <label for="toolValue" class="fs-14 fw-4 white-text">URL</label>
             <input type="text" class="form-control" id="toolValue" name="value" [(ngModel)]="toolData.website_url"
               placeholder="Value" required>
           </div>
           <div class="modal-footer d-flex justify-content-between px-4">
             <button type="button" class="btn btn-secondary cancel-btn fs-12 fw-4" data-bs-dismiss="modal" style="border-radius: 24px;">Cancel</button>
-            <button type="submit" class="btn save-btn text-white" data-bs-dismiss="modal">Update Tool</button>
+            <button type="submit" class="btn save-btn white-text" data-bs-dismiss="modal">Update Tool</button>
           </div>
         </form>
       </div>
@@ -88,35 +88,35 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content dark-theme">
       <div class="modal-header">
-        <h2 class="fs-20 fw-5 text-white" id="addToolsModalLabel">Add New Tools</h2>
+        <h2 class="fs-20 fw-5 white-text" id="addToolsModalLabel">Add New Tools</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #FAF6F6;">X</button>
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onAddTool()" #toolForm="ngForm">
            <div class="mb-3">
-                <label for="toolId" class="fs-14 fw-4 text-white">Select Tool</label>
+                <label for="toolId" class="fs-14 fw-4 white-text">Select Tool</label>
                 <select id="toolId"  class="form-control" (change)="onChangeTool($event)">
                     <option [value]="tool.name" *ngFor="let tool of existingTools" >{{tool.name}}</option>
                 </select>
           </div>
           <div class="mb-3">
-            <label for="toolKey" class="fs-14 fw-4 text-white">Key Name</label>
+            <label for="toolKey" class="fs-14 fw-4 white-text">Key Name</label>
             <input type="text" class="form-control" id="toolKey" name="key" [(ngModel)]="toolData.name"
               placeholder="Key" required>
           </div>
           <div class="mb-3" *ngIf="toolData.type === 'secret'">
-            <label for="toolValue" class="fs-14 fw-4 text-white">Value</label>
+            <label for="toolValue" class="fs-14 fw-4 white-text">Value</label>
             <input type="text" class="form-control" id="toolValue" name="value" [(ngModel)]="toolData.api_key"
               placeholder="Value" required>
           </div>
           <div class="mb-3" *ngIf="toolData.type === 'url'">
-            <label for="toolValue" class="fs-14 fw-4 text-white">Url</label>
+            <label for="toolValue" class="fs-14 fw-4 white-text">Url</label>
             <input type="text" class="form-control" id="toolValue" name="value" [(ngModel)]="toolData.website_url"
               placeholder="Value" required>
           </div>
           <div class="d-flex justify-content-between px-4">
             <button type="button" class="btn btn-secondary cancel-btn fw-12 fw-4" data-bs-dismiss="modal" style="border-radius: 24px;">Cancel</button>
-            <button type="submit" class="save-btn text-white" data-bs-dismiss="modal" style="background-color: #930BC2;">Save</button>
+            <button type="submit" class="save-btn white-text" data-bs-dismiss="modal" style="background-color: #930BC2;">Save</button>
           </div>
         </form>
       </div>

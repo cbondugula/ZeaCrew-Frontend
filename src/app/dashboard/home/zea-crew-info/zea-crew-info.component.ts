@@ -204,7 +204,7 @@ export class ZeaCrewInfoComponent {
               this.spinner.hide();
               if (response['success']) {
                 console.log(response);
-                this.router.navigate(['/home']);
+                this.router.navigate(['/new-created-template']);
               } else {
                 this.snackbar.open(response?.error ? response.error : "Unknown Error Occured","Close",{
                   duration: 3000
@@ -227,7 +227,7 @@ export class ZeaCrewInfoComponent {
               this.spinner.hide();
               if (response['success']) {
                 console.log(response);
-                this.router.navigate(['/home']);
+                this.router.navigate(['/new-created-template']);
               } else {
                 this.snackbar.open(response?.error ? response.error : "Unknown Error Occured","Close",{
                   duration: 3000

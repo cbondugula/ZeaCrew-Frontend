@@ -1,7 +1,7 @@
 <div class="body-container" style="height: calc(100dvh - 74px);">
   <div class="heading">
-    <p class="text-white fs-2">What is LLM?</p>
-    <p class="text-white">
+    <p class="white-text fs-2">What is LLM?</p>
+    <p class="white-text">
       LLM (Large Language Model) are advanced AI models that understand and generate human-like text. They enable natural language understanding and provide intelligent responses, automating tasks like chat interactions, data analysis, and content generation.
     </p>
   </div>
@@ -9,8 +9,8 @@
     <div class="m-4 d-flex justify-content-between">
       <p class="title-p fs-4 fw-semibold">Existing LLM</p>
       <div class="w-25">
-        <p class="text-white fs-7">Select LLM</p>
-        <select class="form-select bg-dark text-white border-secondary">
+        <p class="white-text fs-7">Select LLM</p>
+        <select class="form-select bg-dark white-text border-secondary">
           <option value="">Select Provider</option>
           <option *ngFor="let provider of providers" [value]="provider.name">
             {{ provider.name }}
@@ -32,21 +32,21 @@
         *ngFor="let item of createdLLMs"
       >
         <div class="d-flex justify-content-between">
-          <p class="text-white fs-5 fw-semibold">{{item.name}}</p>
+          <p class="white-text fs-5 fw-semibold">{{item.name}}</p>
           <div class="d-flex gap-2">
             <button class="btn btn-dark" [routerLink]="['/edit-llm']" (click)="onClickEditLLM(item)">✎</button>
             <button class="btn btn-dark text-danger" (click)="deleteLlm(item._id)">🗑</button>
           </div>
         </div>
-        <p class="text-white pt-2 pb-4"></p>
+        <p class="white-text pt-2 pb-4"></p>
         <div class="d-flex justify-content-between">
           <div>
             <p class="text-purple">Provider</p>
-            <p class="text-white">{{item.providerName()}}</p>
+            <p class="white-text">{{item.providerName()}}</p>
           </div>
           <div>
             <p class="text-purple">Source</p>
-            <p class="text-white">-</p>
+            <p class="white-text">-</p>
           </div>
         </div>
       </div>

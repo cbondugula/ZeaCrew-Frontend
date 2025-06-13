@@ -103,7 +103,7 @@ export class NewAddLlmComponent {
           this.spinner.hide();
           if(response['success']) {
             console.log(response);
-            this.router.navigate(['/llm']);
+            this.router.navigate(['/new-llm']);
           }else {
             this.snackbar.open(response?.error ? response?.error : "Unknown Error Occured","Close",{
               duration: 3000

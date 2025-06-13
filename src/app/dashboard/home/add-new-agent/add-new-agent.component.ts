@@ -69,7 +69,7 @@ export class AddNewAgentComponent {
         console.log(res);
         this.tools = res['tools'];
       } else {
-        this.snackbar.open(res?.error ? res.error : "Unknown Error Occured", "Close", {
+        this.snackbar.open(res?.message ? res.message : "Unknown Error Occured", "Close", {
           duration: 3000
         })
       }
